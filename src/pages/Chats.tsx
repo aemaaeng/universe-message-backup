@@ -14,8 +14,9 @@ const SChatContainer = styled.div`
   overflow: auto;
   padding-left: 21px;
   margin: 0px;
-  /* display: flex;
-  flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 `;
 
 function Chats() {

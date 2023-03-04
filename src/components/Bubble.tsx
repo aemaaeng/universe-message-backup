@@ -35,7 +35,7 @@ function Bubble({ data }: BubbleProps) {
       ) : null}
       {data.type === "IMAGE" ? <Image src={data.message} /> : null}
       {data.type === "VOD" ? (
-        <SVideoContainer preload="metadata" controls>
+        <SVideoContainer width="275" height="521" preload="metadata" controls>
           <source src={`media/${data.message}`} />
         </SVideoContainer>
       ) : null}

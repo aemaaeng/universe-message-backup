@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BubbleType } from "../pages/Chats";
+import Image from "./Image";
 
 type BubbleProps = {
   data: BubbleType;
@@ -18,12 +19,6 @@ const SBubbleContainer = styled.div`
   }
 `;
 
-const SImageContainer = styled.img`
-  max-width: 70%;
-  object-fit: contain;
-  border-radius: 3px 20px 20px 3px;
-`;
-
 const SVideoContainer = styled.video`
   max-width: 70%;
   border-radius: 3px 20px 20px 3px;
@@ -38,11 +33,9 @@ function Bubble({ data }: BubbleProps) {
           <div className="text">{data.message}</div>
         </SBubbleContainer>
       ) : null}
-      {data.type === "IMAGE" ? (
-        <SImageContainer src={`media/${data.message}`} alt={data.message} />
-      ) : null}
+      {data.type === "IMAGE" ? <Image src={data.message} /> : null}
       {data.type === "VOD" ? (
-        <SVideoContainer controls>
+        <SVideoContainer preload="metadata" controls>
           <source src={`media/${data.message}`} />
         </SVideoContainer>
       ) : null}

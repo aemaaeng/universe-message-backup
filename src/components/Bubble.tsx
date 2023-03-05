@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { BubbleType } from "../pages/Chats";
+import { ChatMessage } from "../util/groupByMinute";
 import Image from "./Image";
 
-type BubbleProps = {
-  data: BubbleType;
-};
+const SContainer = styled.div`
+  margin: 5px 0px;
+`;
 
-const SBubbleContainer = styled.div`
+const STextContainer = styled.div`
   background-color: var(--deepPurple);
   padding: 10px 25px 10px 17px;
   width: fit-content;
@@ -24,14 +24,14 @@ const SVideoContainer = styled.video`
   border-radius: 3px 20px 20px 3px;
 `;
 
-function Bubble({ data }: BubbleProps) {
+function Bubble({ data }: { data: ChatMessage }) {
   // content의 타입에 따라 다르게 보여주기
   return (
-    <>
+    <SContainer>
       {data.type === "TEXT" ? (
-        <SBubbleContainer>
+        <STextContainer>
           <div className="text">{data.message}</div>
-        </SBubbleContainer>
+        </STextContainer>
       ) : null}
       {data.type === "IMAGE" ? <Image src={data.message} /> : null}
       {data.type === "VOD" ? (
@@ -42,7 +42,7 @@ function Bubble({ data }: BubbleProps) {
       {data.type === "VOICE" ? (
         <audio controls src={`media/${data.message}`}></audio>
       ) : null}
-    </>
+    </SContainer>
   );
 }
 

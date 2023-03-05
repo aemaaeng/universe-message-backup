@@ -1,9 +1,9 @@
-interface ChatMessage {
-  nickname: String;
-  type: String;
-  message: String;
-  datetime: String;
-}
+export type ChatMessage = {
+  nickname: string;
+  type: string;
+  message: string;
+  datetime: string;
+};
 
 function groupByMinute(messages: ChatMessage[]): Record<string, ChatMessage[]> {
   const groupedMessages: Record<string, ChatMessage[]> = {};

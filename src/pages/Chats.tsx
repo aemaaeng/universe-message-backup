@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react";
 import getData from "../util/api";
 import styled from "styled-components";
-import Bubble from "../components/Bubble";
-
-export type BubbleType = {
-  nickname: string;
-  type: string;
-  message: string;
-  datetime: string;
-};
+import groupByMinute from "../util/groupByMinute";
+import GroupedMsg from "../components/GroupedMsg";
+import { ChatMessage } from "../util/groupByMinute";
 
 const SChatContainer = styled.div`
   overflow: auto;
-  padding-left: 21px;
+  padding-left: 10px;
   margin: 0px;
   display: flex;
   flex-direction: column;
@@ -20,7 +15,7 @@ const SChatContainer = styled.div`
 `;
 
 function Chats() {
-  const [data, setData] = useState<BubbleType[]>([]);
+  const [data, setData] = useState<ChatMessage[]>([]);
 
   useEffect(() => {
     getData().then((res) => {
@@ -33,10 +28,12 @@ function Chats() {
     }
   }, []);
 
+  const groupedMessages = Object.values(groupByMinute(data));
+
   return (
     <SChatContainer>
-      {data.map((el, idx) => (
-        <Bubble key={idx} data={el} />
+      {groupedMessages.map((group, idx) => (
+        <GroupedMsg key={idx} data={group} />
       ))}
     </SChatContainer>
   );

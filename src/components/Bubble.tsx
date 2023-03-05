@@ -27,7 +27,6 @@ const STextContainer = styled.div`
 `;
 
 const SVideoContainer = styled.video`
-  max-width: 70%;
   border-radius: 3px 20px 20px 3px;
 `;
 
@@ -63,8 +62,7 @@ function Bubble({
       {data.type === "VOD" ? (
         <SVideoContainer
           className={bubbleClassName}
-          width="275"
-          height="475"
+          height="420"
           preload="metadata"
           controls
         >

@@ -2,11 +2,14 @@ import { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import NoImage from "../img/noImage.png";
 
-const SImageContainer = styled.img`
-  width: 65vw;
-  max-width: 300px;
-  object-fit: contain;
-  border-radius: 3px 20px 20px 3px;
+const SImageContainer = styled.picture`
+  img,
+  source {
+    width: 65vw;
+    max-width: 300px;
+    object-fit: contain;
+    border-radius: 3px 20px 20px 3px;
+  }
 `;
 
 function Image({ src, isLast }: { src: string; isLast: string }) {
@@ -44,12 +47,17 @@ function Image({ src, isLast }: { src: string; isLast: string }) {
   // src.split('.')[0]/webp
 
   return (
-    <SImageContainer
-      className={isLast}
-      ref={imgRef}
-      src={isLoading ? `media/${src}` : NoImage}
-      alt={src}
-    ></SImageContainer>
+    <SImageContainer ref={imgRef}>
+      <source
+        srcSet={isLoading ? `media/webp/${src.split(".")[0]}.webp` : NoImage}
+        type="image/webp"
+      />
+      <img
+        src={isLoading ? `media/${src}` : NoImage}
+        alt={src}
+        className={isLast}
+      />
+    </SImageContainer>
   );
 }
 

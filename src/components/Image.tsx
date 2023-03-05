@@ -3,12 +3,13 @@ import styled from "styled-components";
 import NoImage from "../img/noImage.png";
 
 const SImageContainer = styled.img`
-  max-width: 70%;
+  width: 65vw;
+  max-width: 300px;
   object-fit: contain;
   border-radius: 3px 20px 20px 3px;
 `;
 
-function Image({ src }: { src: string }) {
+function Image({ src, isLast }: { src: string; isLast: string }) {
   // ref로 돔에 바로 접근하기
   const imgRef = useRef<HTMLImageElement>(null);
   const observeRef = useRef<IntersectionObserver>();
@@ -40,8 +41,11 @@ function Image({ src }: { src: string }) {
     });
   }
 
+  // src.split('.')[0]/webp
+
   return (
     <SImageContainer
+      className={isLast}
       ref={imgRef}
       src={isLoading ? `media/${src}` : NoImage}
       alt={src}

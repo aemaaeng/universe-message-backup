@@ -9,16 +9,10 @@ export const GlobalStyle = createGlobalStyle`
     --lightBlack: #535353;
   }
 
-  @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-  }
-
   * {
     box-sizing: border-box;
-    font-family: 'Pretendard-Regular'
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica
+      Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   }
 
   body {

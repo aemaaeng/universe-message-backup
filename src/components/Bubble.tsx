@@ -15,7 +15,7 @@ const SContainer = styled.div`
 
 const STextContainer = styled.div`
   background-color: var(--deepPurple);
-  padding: 10px 25px 10px 17px;
+  padding: 10px 23px 10px 17px;
   width: fit-content;
   max-width: 255px;
   border-radius: 3px 20px 20px 3px;
@@ -78,7 +78,7 @@ function Bubble({
           controls
         ></audio>
       ) : null}
-      {isLastBubble ? <STime>{data.datetime}</STime> : null}
+      {isLastBubble ? <STime>{data.datetime.slice(11, 16)}</STime> : null}
     </SContainer>
   );
 }

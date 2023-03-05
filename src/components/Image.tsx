@@ -3,10 +3,10 @@ import styled from "styled-components";
 import NoImage from "../img/noImage.png";
 
 const SImageContainer = styled.img`
-  max-width: 70%;
+  width: 65vw;
+  max-width: 300px;
   object-fit: contain;
   border-radius: 3px 20px 20px 3px;
-  /* margin: 5px 0px; */
 `;
 
 function Image({ src, isLast }: { src: string; isLast: string }) {
@@ -40,6 +40,8 @@ function Image({ src, isLast }: { src: string; isLast: string }) {
       }
     });
   }
+
+  // src.split('.')[0]/webp
 
   return (
     <SImageContainer

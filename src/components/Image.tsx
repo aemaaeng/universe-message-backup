@@ -6,9 +6,10 @@ const SImageContainer = styled.img`
   max-width: 70%;
   object-fit: contain;
   border-radius: 3px 20px 20px 3px;
+  /* margin: 5px 0px; */
 `;
 
-function Image({ src }: { src: string }) {
+function Image({ src, isLast }: { src: string; isLast: string }) {
   // ref로 돔에 바로 접근하기
   const imgRef = useRef<HTMLImageElement>(null);
   const observeRef = useRef<IntersectionObserver>();
@@ -42,6 +43,7 @@ function Image({ src }: { src: string }) {
 
   return (
     <SImageContainer
+      className={isLast}
       ref={imgRef}
       src={isLoading ? `media/${src}` : NoImage}
       alt={src}

@@ -31,7 +31,7 @@ function GroupedMsg({ data }: { data: ChatMessage[] }) {
       <SBubbleContainer>
         <SProfileName>기현</SProfileName>
         {data.map((msg, idx) => (
-          <Bubble key={idx} data={msg} />
+          <Bubble key={idx} data={msg} idx={idx} length={data.length} />
         ))}
       </SBubbleContainer>
     </SContainer>

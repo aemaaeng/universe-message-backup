@@ -2,18 +2,20 @@ import Bubble from "./Bubble";
 import { ChatMessage } from "../util/groupByMinute";
 import styled from "styled-components";
 import profileImg from "../img/profileImg.jpeg";
+import profileWebp from "../img/profileImg.webp";
 
 const SContainer = styled.div`
   display: flex;
   margin-top: 10px;
 `;
 
-const SProfileImg = styled.img`
-  border-radius: 50%;
-  width: 10%;
-  height: 10%;
-  max-width: 40px;
-  max-height: 40px;
+const SProfileImg = styled.picture`
+  img,
+  source {
+    border-radius: 50%;
+    max-width: 40px;
+    max-height: 40px;
+  }
 `;
 
 const SBubbleContainer = styled.div`
@@ -27,7 +29,10 @@ const SProfileName = styled.div`
 function GroupedMsg({ data }: { data: ChatMessage[] }) {
   return (
     <SContainer>
-      <SProfileImg src={profileImg} />
+      <SProfileImg>
+        <source srcSet={profileWebp} type="image/webp" />
+        <img src={profileImg} alt="profileImg" />
+      </SProfileImg>
       <SBubbleContainer>
         <SProfileName>기현</SProfileName>
         {data.map((msg, idx) => (

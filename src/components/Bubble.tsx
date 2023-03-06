@@ -28,6 +28,7 @@ const STextContainer = styled.div`
 
 const SVideoContainer = styled.video`
   border-radius: 3px 20px 20px 3px;
+  max-width: 255px;
 `;
 
 const STime = styled.span`
@@ -45,33 +46,35 @@ function Bubble({
   idx: number;
   length: number;
 }) {
-  const isLastBubble = idx === length - 1 ? true : false;
-  const bubbleClassName = isLastBubble ? "lastBubble" : "";
+  const isLastBubble = idx === length - 1 ? "lastBubble" : "";
 
   // content의 타입에 따라 다르게 보여주기
   return (
     <SContainer>
       {data.type === "TEXT" ? (
-        <STextContainer className={bubbleClassName}>
+        <STextContainer className={isLastBubble}>
           <div className="text">{data.message}</div>
         </STextContainer>
       ) : null}
       {data.type === "IMAGE" ? (
-        <Image src={data.message} isLast={bubbleClassName} />
+        <Image src={data.message} isLast={isLastBubble} />
       ) : null}
       {data.type === "VOD" ? (
         <SVideoContainer
-          className={bubbleClassName}
+          className={isLastBubble}
+          width="100%"
           height="420"
           preload="metadata"
           controls
+          playsInline
         >
-          <source src={`media/${data.message}`} />
+          <source src={`media/${data.message}#t=0.1`} />
+          Your browser does not support the video tag.
         </SVideoContainer>
       ) : null}
       {data.type === "VOICE" ? (
         <audio
-          className={bubbleClassName}
+          className={isLastBubble}
           src={`media/${data.message}`}
           controls
         ></audio>

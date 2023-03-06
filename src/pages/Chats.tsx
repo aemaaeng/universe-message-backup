@@ -15,12 +15,12 @@ const SChatContainer = styled.div`
 `;
 
 function Chats() {
-  const [data, setData] = useState<ChatMessage[]>([]);
+  const [data, setData] = useState<ChatMessage[][]>([]);
 
   useEffect(() => {
     getData().then((res) => {
       const sliced = res.slice(-20);
-      setData(sliced);
+      setData(Object.values(groupByMinute(sliced)));
     });
     // window.scrollTo({ top: 396, left: 0, behavior: "smooth" });
     if (window.history.scrollRestoration) {
@@ -28,11 +28,11 @@ function Chats() {
     }
   }, []);
 
-  const groupedMessages = Object.values(groupByMinute(data));
+  // const groupedMessages = Object.values(groupByMinute(data));
 
   return (
     <SChatContainer>
-      {groupedMessages.map((group, idx) => (
+      {data.map((group, idx) => (
         <GroupedMsg key={idx} data={group} />
       ))}
     </SChatContainer>

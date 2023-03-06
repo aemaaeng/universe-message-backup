@@ -28,6 +28,7 @@ const STextContainer = styled.div`
 
 const SVideoContainer = styled.video`
   border-radius: 3px 20px 20px 3px;
+  max-width: 255px;
 `;
 
 const STime = styled.span`
@@ -62,11 +63,14 @@ function Bubble({
       {data.type === "VOD" ? (
         <SVideoContainer
           className={bubbleClassName}
+          width="100%"
           height="420"
           preload="metadata"
           controls
+          playsInline
         >
-          <source src={`media/${data.message}`} />
+          <source src={`media/${data.message}#t=0.1`} />
+          Your browser does not support the video tag.
         </SVideoContainer>
       ) : null}
       {data.type === "VOICE" ? (

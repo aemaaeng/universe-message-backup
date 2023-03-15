@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
-import getData from "../util/api";
+import chatData from "../data/data.json";
 import styled from "styled-components";
-import groupByMinute from "../util/groupByMinute";
+import groupChatsByDateAndMinute from "../util/groupByDateAndMinute";
 import GroupedMsg from "../components/GroupedMsg";
-import { ChatMessage } from "../util/groupByMinute";
+import { ChatGroup } from "../util/groupByDateAndMinute";
 
 const SChatContainer = styled.div`
   overflow: auto;
@@ -15,26 +14,16 @@ const SChatContainer = styled.div`
 `;
 
 function Chats() {
-  const [data, setData] = useState<ChatMessage[][]>([]);
-
-  useEffect(() => {
-    getData().then((res) => {
-      const sliced = res.slice(-20);
-      setData(Object.values(groupByMinute(sliced)));
-    });
-    // window.scrollTo({ top: 396, left: 0, behavior: "smooth" });
-    if (window.history.scrollRestoration) {
-      window.history.scrollRestoration = "auto";
-    }
-  }, []);
-
-  // const groupedMessages = Object.values(groupByMinute(data));
+  const data = groupChatsByDateAndMinute(chatData);
+  console.log(data);
 
   return (
     <SChatContainer>
+      {/* TODO: 날짜별로 묶어서 렌더링하기 */}
       {data.map((group, idx) => (
         <GroupedMsg key={idx} data={group} />
       ))}
+      <div>테스트 중</div>
     </SChatContainer>
   );
 }

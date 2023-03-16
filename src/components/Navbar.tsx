@@ -13,14 +13,21 @@ const SFooter = styled.footer`
 const SNavContainer = styled.div`
   height: 50px;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   background-color: white;
+
+  .menu {
+    width: 50%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 function Navbar() {
   const { pathname } = useLocation();
 
+  // 현재 페이지 경로와 전달인자로 들어온 경로의 일치 여부를 확인해 색상을 리턴하는 함수
   function fillIcon(page: string) {
     if (pathname === page) {
       return "#7C4FFD";
@@ -31,10 +38,10 @@ function Navbar() {
   return (
     <SFooter>
       <SNavContainer>
-        <Link to="/">
+        <Link to="/" className="menu">
           <ChatIcon width="23px" height="25px" fill={fillIcon("/")} />
         </Link>
-        <Link to="/calendar">
+        <Link to="/calendar" className="menu">
           <CalendarIcon
             width="23px"
             height="25px"

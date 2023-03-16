@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
-import getData from "../util/api";
+import chatData from "../data/data.json";
 import styled from "styled-components";
-import groupByMinute from "../util/groupByMinute";
-import GroupedMsg from "../components/GroupedMsg";
-import { ChatMessage } from "../util/groupByMinute";
+import groupChatsByDateAndMinute from "../util/groupByDateAndMinute";
+import GroupedByDate from "../components/GroupedByDate";
 
 const SChatContainer = styled.div`
   overflow: auto;
@@ -15,25 +13,13 @@ const SChatContainer = styled.div`
 `;
 
 function Chats() {
-  const [data, setData] = useState<ChatMessage[][]>([]);
-
-  useEffect(() => {
-    getData().then((res) => {
-      const sliced = res.slice(-20);
-      setData(Object.values(groupByMinute(sliced)));
-    });
-    // window.scrollTo({ top: 396, left: 0, behavior: "smooth" });
-    if (window.history.scrollRestoration) {
-      window.history.scrollRestoration = "auto";
-    }
-  }, []);
-
-  // const groupedMessages = Object.values(groupByMinute(data));
+  const data = groupChatsByDateAndMinute(chatData);
+  console.log(data);
 
   return (
     <SChatContainer>
       {data.map((group, idx) => (
-        <GroupedMsg key={idx} data={group} />
+        <GroupedByDate key={idx} data={group} />
       ))}
     </SChatContainer>
   );

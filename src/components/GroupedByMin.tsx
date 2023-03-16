@@ -1,8 +1,8 @@
 import Bubble from "./Bubble";
-import { ChatMessage } from "../util/groupByMinute";
 import styled from "styled-components";
 import profileImg from "../img/profileImg.jpeg";
 import profileWebp from "../img/profileImg.webp";
+import { ChatMessage } from "../util/groupByDateAndMinute";
 
 const SContainer = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const SProfileName = styled.div`
   font-weight: 700;
 `;
 
-function GroupedMsg({ data }: { data: ChatMessage[] }) {
+function GroupedByMin({ data }: { data: ChatMessage[] }) {
   return (
     <SContainer>
       <SProfileImg>
@@ -35,12 +35,12 @@ function GroupedMsg({ data }: { data: ChatMessage[] }) {
       </SProfileImg>
       <SBubbleContainer>
         <SProfileName>기현</SProfileName>
-        {data.map((msg, idx) => (
-          <Bubble key={idx} data={msg} idx={idx} length={data.length} />
+        {data.map((el, idx) => (
+          <Bubble key={idx} data={el} idx={idx} length={data.length} />
         ))}
       </SBubbleContainer>
     </SContainer>
   );
 }
 
-export default GroupedMsg;
+export default GroupedByMin;

@@ -31,7 +31,7 @@ const SVideoContainer = styled.video`
   max-width: 255px;
 `;
 
-const STime = styled.span`
+const SMinute = styled.span`
   color: var(--gray);
   font-size: 0.8rem;
   margin-bottom: 3px;
@@ -79,7 +79,7 @@ function Bubble({
           controls
         ></audio>
       ) : null}
-      {isLastBubble ? <STime>{data.datetime.slice(11, 16)}</STime> : null}
+      {isLastBubble ? <SMinute>{data.datetime.slice(11, 16)}</SMinute> : null}
     </SContainer>
   );
 }

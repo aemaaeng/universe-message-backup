@@ -14,7 +14,6 @@ const SChatContainer = styled.div`
 
 function Chats() {
   const data = groupChatsByDateAndMinute(chatData);
-  console.log(data);
 
   return (
     <SChatContainer>

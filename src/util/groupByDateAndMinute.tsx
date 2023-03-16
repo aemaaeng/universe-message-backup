@@ -23,9 +23,10 @@ function groupChatsByDateAndMinute(chats: ChatMessage[]): ChatGroup[] {
       chatGroups.push(chatGroup);
     }
 
+    // 분 단위로 묶는다.
     let minuteGroup = chatGroup.chats.find(
       (group) =>
-        group[0].datetime.substring(11, 5) === chat.datetime.substring(11, 5)
+        group[0].datetime.substring(11, 16) === chat.datetime.substring(11, 16)
     );
 
     if (!minuteGroup) {

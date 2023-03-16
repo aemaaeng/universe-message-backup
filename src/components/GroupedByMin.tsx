@@ -31,7 +31,7 @@ function GroupedByMin({ data }: { data: ChatMessage[] }) {
     <SContainer>
       <SProfileImg>
         <source srcSet={profileWebp} type="image/webp" />
-        <img src={profileImg} alt="profileImg" />
+        <img src={profileImg} width="40px" height="40px" alt="profileImg" />
       </SProfileImg>
       <SBubbleContainer>
         <SProfileName>기현</SProfileName>

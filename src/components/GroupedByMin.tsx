@@ -6,7 +6,7 @@ import { ChatMessage } from "../util/groupByDateAndMinute";
 
 const SContainer = styled.div`
   display: flex;
-  margin-top: 10px;
+  margin: 15px 0px;
 `;
 
 const SProfileImg = styled.picture`
@@ -23,6 +23,7 @@ const SBubbleContainer = styled.div`
 `;
 
 const SProfileName = styled.div`
+  font-size: 0.9rem;
   font-weight: 700;
 `;
 

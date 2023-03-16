@@ -1,8 +1,7 @@
 import chatData from "../data/data.json";
 import styled from "styled-components";
 import groupChatsByDateAndMinute from "../util/groupByDateAndMinute";
-import GroupedMsg from "../components/GroupedMsg";
-import { ChatGroup } from "../util/groupByDateAndMinute";
+import GroupedByDate from "../components/GroupedByDate";
 
 const SChatContainer = styled.div`
   overflow: auto;
@@ -19,11 +18,9 @@ function Chats() {
 
   return (
     <SChatContainer>
-      {/* TODO: 날짜별로 묶어서 렌더링하기 */}
       {data.map((group, idx) => (
-        <GroupedMsg key={idx} data={group} />
+        <GroupedByDate key={idx} data={group} />
       ))}
-      <div>테스트 중</div>
     </SChatContainer>
   );
 }

@@ -19,8 +19,12 @@ const SProfileImg = styled.picture`
   }
 `;
 
-const SBubbleContainer = styled.div`
+const SBubbleContainer = styled.ul`
   padding-left: 10px;
+
+  li:last-child > *:not(span) {
+    border-radius: 3px 20px 20px 20px;
+  }
 `;
 
 const SProfileName = styled.div`

@@ -12,7 +12,7 @@ const SImageContainer = styled.picture`
   }
 `;
 
-function Image({ src, isLast }: { src: string; isLast: string }) {
+function Image({ src }: { src: string }) {
   // ref로 돔에 바로 접근하기
   const imgRef = useRef<HTMLImageElement>(null);
   const observeRef = useRef<IntersectionObserver>();
@@ -52,11 +52,7 @@ function Image({ src, isLast }: { src: string; isLast: string }) {
         srcSet={isLoading ? `media/webp/${src.split(".")[0]}.webp` : NoImage}
         type="image/webp"
       />
-      <img
-        src={isLoading ? `media/${src}` : NoImage}
-        alt={src}
-        className={isLast}
-      />
+      <img src={isLoading ? `media/${src}` : NoImage} alt={src} />
     </SImageContainer>
   );
 }

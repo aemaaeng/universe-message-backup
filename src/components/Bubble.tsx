@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ChatMessage } from "../util/groupByDateAndMinute";
+import { ChatMessage } from "../util/groupByMinute";
 import Image from "./Image";
 
 const SContainer = styled.li`

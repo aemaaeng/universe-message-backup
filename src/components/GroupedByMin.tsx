@@ -2,7 +2,7 @@ import Bubble from "./Bubble";
 import styled from "styled-components";
 import profileImg from "../img/profileImg.jpeg";
 import profileWebp from "../img/profileImg.webp";
-import { ChatMessage } from "../util/groupByDateAndMinute";
+import { ChatMessage } from "../util/groupByMinute";
 
 const SContainer = styled.div`
   display: flex;

@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import groupChatsByDateAndMinute, {
-  ChatGroup,
-} from "../util/groupByDateAndMinute";
-import GroupedByDate from "../components/GroupedByDate";
+import groupByMinute, { ChatMessage } from "../util/groupByMinute";
 import { useEffect, useState } from "react";
 import useIntersect from "../hooks/useIntersect";
+import GroupedByMin from "../components/GroupedByMin";
 
 const SChatContainer = styled.div`
   overflow: hidden;
@@ -17,7 +15,7 @@ function Chats() {
   const [total, setTotal] = useState(0);
   const LIMIT = 40;
 
-  const [data, setData] = useState<ChatGroup[]>([]);
+  const [data, setData] = useState<ChatMessage[][]>([]);
   const ref = useIntersect(() => {
     setPage(page + 1);
     getNextData(page, LIMIT);
@@ -32,7 +30,7 @@ function Chats() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setData(groupChatsByDateAndMinute(res.slice(0, 40)));
+        setData(Object.values(groupByMinute(res.slice(0, 40))));
       });
   }, []);
 
@@ -54,13 +52,7 @@ function Chats() {
         // console.log(skip * take, take * page);
         // console.log(res.slice(skip * take, take * (page + 1)));
         // console.log(data);
-        setData(
-          data.concat(
-            groupChatsByDateAndMinute([
-              ...res.slice(skip * take, take * (page + 1)),
-            ])
-          )
-        );
+        // setData(~~)
         // setTotal()
       });
   }
@@ -68,9 +60,9 @@ function Chats() {
   return (
     <SChatContainer>
       {data.map((el, idx) => {
-        return <GroupedByDate key={idx} data={el} />;
+        return <GroupedByMin key={idx} data={el} />;
       })}
-      <div ref={ref}></div>
+      {/* <div ref={ref}></div> */}
     </SChatContainer>
   );
 }

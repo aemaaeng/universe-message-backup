@@ -1,16 +1,12 @@
 import styled from "styled-components";
-import { ChatMessage } from "../util/groupByDateAndMinute";
+import { ChatMessage } from "../util/groupByMinute";
 import Image from "./Image";
 
-const SContainer = styled.div`
+const SContainer = styled.li`
   margin: 5px 0px;
   display: flex;
   align-items: flex-end;
   gap: 7px;
-
-  .lastBubble {
-    border-radius: 3px 20px 20px 20px;
-  }
 `;
 
 const STextContainer = styled.div`
@@ -52,16 +48,13 @@ function Bubble({
   return (
     <SContainer>
       {data.type === "TEXT" ? (
-        <STextContainer className={isLastBubble}>
+        <STextContainer>
           <div className="text">{data.message}</div>
         </STextContainer>
       ) : null}
-      {data.type === "IMAGE" ? (
-        <Image src={data.message} isLast={isLastBubble} />
-      ) : null}
+      {data.type === "IMAGE" ? <Image src={data.message} /> : null}
       {data.type === "VOD" ? (
         <SVideoContainer
-          className={isLastBubble}
           width="100%"
           height="420"
           preload="metadata"
@@ -73,11 +66,7 @@ function Bubble({
         </SVideoContainer>
       ) : null}
       {data.type === "VOICE" ? (
-        <audio
-          className={isLastBubble}
-          src={`media/${data.message}`}
-          controls
-        ></audio>
+        <audio src={`media/${data.message}`} controls></audio>
       ) : null}
       {isLastBubble ? <SMinute>{data.datetime.slice(11, 16)}</SMinute> : null}
     </SContainer>

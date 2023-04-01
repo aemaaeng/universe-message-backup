@@ -8,13 +8,11 @@ function App() {
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <main>
-        <Routes>
-          <Route path="/" element={<Chats />} />
-          <Route path="/calendar" element={<Calendar />} />
-        </Routes>
-        <Navbar />
-      </main>
+      <Routes>
+        <Route path="/" element={<Chats />} />
+        <Route path="/calendar" element={<Calendar />} />
+      </Routes>
+      <Navbar />
     </BrowserRouter>
   );
 }

@@ -2,11 +2,12 @@ import Bubble from "./Bubble";
 import styled from "styled-components";
 import profileImg from "../img/profileImg.jpeg";
 import profileWebp from "../img/profileImg.webp";
-import { ChatMessage } from "../util/groupByDateAndMinute";
+import { ChatMessage } from "../util/groupByMinute";
 
 const SContainer = styled.div`
   display: flex;
   margin: 15px 0px;
+  padding-left: 10px;
 `;
 
 const SProfileImg = styled.picture`
@@ -18,8 +19,12 @@ const SProfileImg = styled.picture`
   }
 `;
 
-const SBubbleContainer = styled.div`
+const SBubbleContainer = styled.ul`
   padding-left: 10px;
+
+  li:last-child > *:not(span) {
+    border-radius: 3px 20px 20px 20px;
+  }
 `;
 
 const SProfileName = styled.div`

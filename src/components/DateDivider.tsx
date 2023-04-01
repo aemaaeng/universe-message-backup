@@ -1,5 +1,3 @@
-import { ChatMessage } from "../util/groupByMinute";
-import GroupedByMin from "./GroupedByMin";
 import styled from "styled-components";
 
 const SContainer = styled.div`
@@ -33,20 +31,13 @@ const SContainer = styled.div`
   }
 `;
 
-function GroupedByDate({ data }: { data: ChatMessage }) {
-  const parsedDate = data.datetime.split("-");
-  // TODO: 바로 전 데이터와 비교해서 다를 때에만 구분선 긋기
-
+function DateDivider({ date }: { date: string }) {
+  const slicedDate = date.split("-");
   return (
     <SContainer>
-      {/* <div id="line">
-        {`${parsedDate[0]}년 ${parsedDate[1]}월 ${parsedDate[2]}일`}
-      </div> */}
-      {/* {data.map((byMin, idx) => (
-        <GroupedByMin key={idx} data={byMin} />
-      ))} */}
+      <div id="line">{`${slicedDate[0]}년 ${slicedDate[1]}월 ${slicedDate[2]}일`}</div>
     </SContainer>
   );
 }
 
-export default GroupedByDate;
+export default DateDivider;

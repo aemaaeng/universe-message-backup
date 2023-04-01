@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import groupByMinute, { ChatMessage } from "../util/groupByMinute";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useIntersect from "../hooks/useIntersect";
 import GroupedByMin from "../components/GroupedByMin";
+import DateDivider from "../components/DateDivider";
 
 const SChatContainer = styled.div`
   overflow: hidden;
@@ -30,7 +31,7 @@ function Chats() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setData(Object.values(groupByMinute(res.slice(0, 40))));
+        setData(Object.values(groupByMinute(res.slice(0, 120))));
       });
   }, []);
 
@@ -59,8 +60,25 @@ function Chats() {
 
   return (
     <SChatContainer>
-      {data.map((el, idx) => {
-        return <GroupedByMin key={idx} data={el} />;
+      {data.map((el, idx, arr) => {
+        // index가 1 이상이고, arr.length를 초과하지 않아야 함.
+        let isDifferentDate;
+        if (idx >= 1 && idx < arr.length) {
+          isDifferentDate =
+            el[0].datetime.slice(0, 10) !==
+            arr[idx - 1][0].datetime.slice(0, 10)
+              ? true
+              : false;
+        }
+
+        return (
+          <React.Fragment key={idx}>
+            {isDifferentDate || idx === 0 ? (
+              <DateDivider date={el[0].datetime.slice(0, 10)} />
+            ) : null}
+            <GroupedByMin data={el} />
+          </React.Fragment>
+        );
       })}
       {/* <div ref={ref}></div> */}
     </SChatContainer>

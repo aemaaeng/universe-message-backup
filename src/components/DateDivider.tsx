@@ -3,7 +3,7 @@ import styled from "styled-components";
 const SContainer = styled.div`
   #line {
     font-size: 0.75rem;
-    margin-top: 15px;
+    margin: 15px 0px;
     color: var(--gray);
     display: flex;
     align-items: center;

@@ -1,15 +1,9 @@
-import styled from "styled-components";
 import groupByMinute, { ChatMessage } from "../util/groupByMinute";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import useIntersect from "../hooks/useIntersect";
 import GroupedByMin from "../components/GroupedByMin";
 import DateDivider from "../components/DateDivider";
-
-const SChatContainer = styled.div`
-  overflow: hidden;
-  margin: 0px;
-  margin-bottom: 50px;
-`;
+import { Virtuoso } from "react-virtuoso";
 
 function Chats() {
   const [page, setPage] = useState(0);
@@ -31,7 +25,7 @@ function Chats() {
     })
       .then((res) => res.json())
       .then((res) => {
-        setData(Object.values(groupByMinute(res.slice(0, 120))));
+        setData(Object.values(groupByMinute(res)));
       });
   }, []);
 
@@ -59,9 +53,14 @@ function Chats() {
   }
 
   return (
-    <SChatContainer>
-      {data.map((el, idx, arr) => {
-        // index가 1 이상이고, arr.length를 초과하지 않아야 함.
+    <Virtuoso
+      style={{
+        height: "calc(100vh - 50px)",
+        margin: "0px",
+      }}
+      data={data}
+      context={data}
+      itemContent={(idx, el, arr) => {
         let isDifferentDate;
         if (idx >= 1 && idx < arr.length) {
           isDifferentDate =
@@ -70,18 +69,16 @@ function Chats() {
               ? true
               : false;
         }
-
         return (
-          <React.Fragment key={idx}>
+          <div key={idx} style={{ paddingBottom: "1px" }}>
             {isDifferentDate || idx === 0 ? (
               <DateDivider date={el[0].datetime.slice(0, 10)} />
             ) : null}
             <GroupedByMin data={el} />
-          </React.Fragment>
+          </div>
         );
-      })}
-      {/* <div ref={ref}></div> */}
-    </SChatContainer>
+      }}
+    />
   );
 }
 

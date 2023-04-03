@@ -6,7 +6,7 @@ import { ChatMessage } from "../util/groupByMinute";
 
 const SContainer = styled.div`
   display: flex;
-  margin: 15px 0px;
+  margin: 5px 0px;
   padding-left: 10px;
 `;
 

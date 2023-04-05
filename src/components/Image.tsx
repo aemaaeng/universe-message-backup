@@ -22,7 +22,7 @@ function Image({ src }: { src: string }) {
     if (!observeRef.current) {
       // 새 인스턴스 생성
       observeRef.current = new IntersectionObserver(onIntersection, {
-        threshold: 0.7,
+        threshold: 0.3,
       });
     }
 

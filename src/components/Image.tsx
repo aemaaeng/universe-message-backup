@@ -44,15 +44,13 @@ function Image({ src }: { src: string }) {
     });
   }
 
-  // src.split('.')[0]/webp
-
   return (
     <SImageContainer ref={imgRef}>
       <source
         srcSet={isLoading ? `media/webp/${src.split(".")[0]}.webp` : NoImage}
         type="image/webp"
       />
-      <img src={isLoading ? `media/${src}` : NoImage} alt={src} />
+      <img src={isLoading ? `media/compressed/${src}` : NoImage} alt={src} />
     </SImageContainer>
   );
 }

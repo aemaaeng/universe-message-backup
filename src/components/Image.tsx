@@ -22,7 +22,7 @@ function Image({ src }: { src: string }) {
     if (!observeRef.current) {
       // 새 인스턴스 생성
       observeRef.current = new IntersectionObserver(onIntersection, {
-        threshold: 0.7,
+        threshold: 0.3,
       });
     }
 
@@ -44,15 +44,13 @@ function Image({ src }: { src: string }) {
     });
   }
 
-  // src.split('.')[0]/webp
-
   return (
     <SImageContainer ref={imgRef}>
       <source
         srcSet={isLoading ? `media/webp/${src.split(".")[0]}.webp` : NoImage}
         type="image/webp"
       />
-      <img src={isLoading ? `media/${src}` : NoImage} alt={src} />
+      <img src={isLoading ? `media/compressed/${src}` : NoImage} alt={src} />
     </SImageContainer>
   );
 }

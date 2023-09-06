@@ -1,10 +1,11 @@
+"use client";
+
 import Bubble from "./Bubble";
 import styled from "styled-components";
-import profileImg from "../img/profileImg.jpeg";
-import profileWebp from "../img/profileImg.webp";
-import { ChatMessage } from "../util/groupByMinute";
+import Image from "next/image";
+import { ChatMessage } from "./Bubble";
 
-const SContainer = styled.div`
+const SGroupContainer = styled.div`
   display: flex;
   margin: 5px 0px;
   padding-left: 10px;
@@ -22,6 +23,13 @@ const SProfileImg = styled.picture`
 const SBubbleContainer = styled.ul`
   padding-left: 10px;
 
+  img {
+    width: 65vw;
+    max-width: 300px;
+    object-fit: contain;
+    border-radius: 3px 20px 20px 3px;
+  }
+
   li:last-child > *:not(span) {
     border-radius: 3px 20px 20px 20px;
   }
@@ -34,18 +42,22 @@ const SProfileName = styled.div`
 
 function GroupedByMin({ data }: { data: ChatMessage[] }) {
   return (
-    <SContainer>
+    <SGroupContainer>
       <SProfileImg>
-        <source srcSet={profileWebp} type="image/webp" />
-        <img src={profileImg} width="40px" height="40px" alt="profileImg" />
+        <Image
+          src="/media/profileImg.jpeg"
+          width="40"
+          height="40"
+          alt="profileImg"
+        />
       </SProfileImg>
       <SBubbleContainer>
         <SProfileName>기현</SProfileName>
-        {data.map((el, idx) => (
-          <Bubble key={idx} data={el} idx={idx} length={data.length} />
-        ))}
+        {data.map((el, idx) => {
+          return <Bubble key={idx} data={el} idx={idx} length={data.length} />;
+        })}
       </SBubbleContainer>
-    </SContainer>
+    </SGroupContainer>
   );
 }
 

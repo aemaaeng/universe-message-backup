@@ -1,6 +1,13 @@
+"use client";
 import styled from "styled-components";
-import { ChatMessage } from "../util/groupByMinute";
-import Image from "./Image";
+import Image from "next/image";
+
+export type ChatMessage = {
+  nickname: string;
+  type: string;
+  message: string;
+  datetime: string;
+};
 
 const SContainer = styled.li`
   margin: 5px 0px;
@@ -24,7 +31,7 @@ const STextContainer = styled.div`
 
 const SVideoContainer = styled.video`
   border-radius: 3px 20px 20px 3px;
-  max-width: 255px;
+  max-width: 300px;
 `;
 
 const SMinute = styled.span`
@@ -52,7 +59,16 @@ function Bubble({
           <div className="text">{data.message}</div>
         </STextContainer>
       ) : null}
-      {data.type === "IMAGE" ? <Image src={data.message} /> : null}
+      {data.type === "IMAGE" ? (
+        <Image
+          src={`/media/${data.message}`}
+          alt={`${data.message}`}
+          width={0}
+          height={0}
+          sizes="65vw"
+          style={{ height: "auto" }}
+        />
+      ) : null}
       {data.type === "VOD" ? (
         <SVideoContainer
           width="100%"

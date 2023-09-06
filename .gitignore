@@ -50,3 +50,6 @@ yarn-error.log*
 # media, data
 media
 data.json
+
+# next
+.next

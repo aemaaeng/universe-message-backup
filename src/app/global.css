@@ -54,6 +54,8 @@ a {
 
 #chatlist {
   display: grid;
+  margin: 0px 15px 0px 15px;
+  gap: 15px;
   grid-template-columns: repeat(3, 1fr);
 }
 

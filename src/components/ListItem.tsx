@@ -17,8 +17,27 @@ const SDate = styled.li`
   font-weight: 600;
   font-size: 1.3rem;
   padding: 30px 20px;
-  margin: 10px;
+  /* margin: 10px 20px; */
   border-radius: 5px;
+`;
+
+const SLink = styled(Link)`
+  &:after {
+    background: none repeat scroll 0 0 transparent;
+    position: relative;
+    bottom: -5px;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    background: var(--deepPurple);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+  &:hover:after {
+    width: 100%;
+    left: 0;
+  }
 `;
 
 const SIconGroup = styled.div`
@@ -39,7 +58,7 @@ function ListItem({
 
   return (
     <SDate key={id}>
-      <Link href={`chats/${content}`}>{content}</Link>
+      <SLink href={`chats/${content}`}>{content}</SLink>
       <SIconGroup>
         {IMAGE ? (
           <Image src={picIcon} width="20" height="18" alt="picIcon" />

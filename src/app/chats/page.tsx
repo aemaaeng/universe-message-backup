@@ -1,6 +1,6 @@
 // chatlist
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import ListItem from "@/components/ListItem";
 
 export default async function ChatList() {
   const resp = await fetch("http://localhost:3000/api/list");
@@ -8,13 +8,9 @@ export default async function ChatList() {
 
   return (
     <>
-      <Navbar title="list" />
+      <Navbar title="CHATS" />
       {list.map((date: string, index: number) => {
-        return (
-          <li key={index}>
-            <Link href={`chats/${date}`}>{date}</Link>
-          </li>
-        );
+        return <ListItem content={date} id={index} />;
       })}
     </>
   );

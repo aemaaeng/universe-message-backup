@@ -12,9 +12,19 @@ export default async function ChatList() {
   return (
     <>
       <Navbar title="CHATS" />
-      <ol>
+      <ol id="chatlist">
         {list.map((item: Item, index: number) => {
-          return <ListItem key={index} content={item.date} id={index} />;
+          const { IMAGE, VOD, VOICE } = item;
+          const media = { IMAGE, VOD, VOICE };
+
+          return (
+            <ListItem
+              key={index}
+              content={item.date}
+              id={index}
+              media={media}
+            />
+          );
         })}
       </ol>
     </>

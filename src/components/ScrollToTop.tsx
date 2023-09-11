@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import topArrow from "@/icons/toparrow.svg";
 import styled from "styled-components";
 import {
@@ -33,12 +34,13 @@ const ScrollToTopVariants: Variants = {
 };
 
 function ScrollToTop() {
+  const pathname = usePathname();
   const { scrollY } = useScroll();
   const controls = useAnimationControls();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 0) controls.start("show");
-    else controls.start("hide");
+    if (latest === 0 || pathname === "/") controls.start("hide");
+    else controls.start("show");
   });
 
   function handleScrollToTop() {

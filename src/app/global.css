@@ -33,6 +33,7 @@ ol,
 ul,
 li {
   list-style: none;
+  padding-left: 0;
 }
 
 h1,
@@ -49,4 +50,23 @@ a {
   text-decoration: none;
   outline: none;
   color: inherit;
+}
+
+#chatlist {
+  display: grid;
+  margin: 0px 15px 0px 15px;
+  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 800px) {
+  #chatlist {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #chatlist {
+    grid-template-columns: 1fr;
+  }
 }

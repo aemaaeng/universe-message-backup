@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export type ChatMessage = {
   nickname: string;
-  type: string;
+  type: "TEXT" | "IMAGE" | "VOD" | "VOICE";
   message: string;
   datetime: string;
 };

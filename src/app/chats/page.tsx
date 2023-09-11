@@ -1,17 +1,32 @@
 // chatlist
 import Navbar from "@/components/Navbar";
 import ListItem from "@/components/ListItem";
+import { Item } from "@/pages/api/list";
 
 export default async function ChatList() {
-  const resp = await fetch("http://localhost:3000/api/list");
+  const resp = await fetch("http://localhost:3000/api/list", {
+    cache: "no-cache",
+  });
   const list = await resp.json();
 
   return (
     <>
       <Navbar title="CHATS" />
-      {list.map((date: string, index: number) => {
-        return <ListItem content={date} id={index} />;
-      })}
+      <ol id="chatlist">
+        {list.map((item: Item, index: number) => {
+          const { IMAGE, VOD, VOICE } = item;
+          const media = { IMAGE, VOD, VOICE };
+
+          return (
+            <ListItem
+              key={index}
+              content={item.date}
+              id={index}
+              media={media}
+            />
+          );
+        })}
+      </ol>
     </>
   );
 }

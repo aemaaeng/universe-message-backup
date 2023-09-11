@@ -1,6 +1,7 @@
 import "./global.css";
 import type { Metadata } from "next";
 import StyledComponentsRegistry from "../../lib/registry";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "햄니버스",
@@ -15,7 +16,10 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        <StyledComponentsRegistry>
+          {children}
+          <ScrollToTop />
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

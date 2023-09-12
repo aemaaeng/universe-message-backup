@@ -7,7 +7,7 @@ import { ChatMessage } from "./Bubble";
 
 const SGroupContainer = styled.div`
   display: flex;
-  margin: 5px 0px;
+  margin: 10px 0px;
   padding-left: 10px;
 `;
 

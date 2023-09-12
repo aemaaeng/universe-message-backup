@@ -3,6 +3,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import { Montserrat, Bagel_Fat_One } from "next/font/google";
+import useTypingEffect from "@/hooks/useTypingEffect";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -40,6 +41,22 @@ const SHomeContainer = styled.main`
   #period {
     margin-top: 0px;
   }
+
+  #typing::after {
+    content: "";
+    margin-left: 0.5rem;
+    border-right: 2px solid var(--deepPurple);
+    animation: cursor 0.9s infinite steps(2);
+  }
+
+  @keyframes cursor {
+    from {
+      border-right: 2px solid var(--lightPurple);
+    }
+    to {
+      border-right: 2px solid var(--deepPurple);
+    }
+  }
 `;
 
 const SEnterButton = styled.button`
@@ -60,12 +77,22 @@ const SEnterButton = styled.button`
 `;
 
 function Home() {
+  const word = useTypingEffect("KIHYUN Private Message", 100);
+  // const wordsToType = [
+  //   "KIHYUN Private Message",
+  //   "똑똑",
+  //   "뭐해요?",
+  //   "사랑하고 빠빠이♥️",
+  // ];
+
   return (
     <SHomeContainer>
       <h1 id="title">
         🐹 <span className={bagelFatOne.className}>햄니버스</span> 🐹
       </h1>
-      <h1 className={montserrat.className}>KIHYUN Private Message</h1>
+      <h1 className={montserrat.className} id="typing">
+        {word}
+      </h1>
       <p>몬스타엑스 기현 프라이빗 메시지 백업공간</p>
       <p id="period">2022-03-10 ~ 2023-02-14</p>
       <Link href="/chats">

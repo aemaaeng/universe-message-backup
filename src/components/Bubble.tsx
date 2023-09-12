@@ -77,12 +77,12 @@ function Bubble({
           controls
           playsInline
         >
-          <source src={`media/${data.message}#t=0.1`} />
+          <source src={`/media/${data.message}#t=0.1`} />
           Your browser does not support the video tag.
         </SVideoContainer>
       ) : null}
       {data.type === "VOICE" ? (
-        <audio src={`media/${data.message}`} controls></audio>
+        <audio src={`/media/${data.message}`} controls></audio>
       ) : null}
       {isLastBubble ? <SMinute>{data.datetime.slice(11, 16)}</SMinute> : null}
     </SContainer>

@@ -70,3 +70,7 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+#chats > div:last-child {
+  margin-bottom: 15px;
+}

@@ -2,14 +2,24 @@
 
 import styled from "styled-components";
 import { useRouter } from "next/navigation";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const SNavContainer = styled.div`
-  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--gray);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 70px;
   margin-bottom: 20px;
+  background-color: var(--lightPurple);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 8px;
 
   #title {
     color: var(--deepPurple);
@@ -33,7 +43,9 @@ function Navbar({ title }: { title: string }) {
   return (
     <SNavContainer>
       <SBack onClick={() => router.back()}>&#8249;</SBack>
-      <h2 id="title">{title}</h2>
+      <h2 id="title" className={montserrat.className}>
+        {title}
+      </h2>
     </SNavContainer>
   );
 }

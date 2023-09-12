@@ -1,16 +1,17 @@
 /** @type {import('next').NextConfig} */
 const withImages = require("next-images");
-const nextConfig = {
+
+const nextConfig = withImages({
   experimental: {
     appDir: true,
   },
   images: {
-    formats: ["image/webp", "image/jpeg"],
+    formats: ["image/avif", "image/webp"],
   },
   compiler: {
     styledComponents: true,
   },
-};
+  swcMinify: true,
+});
 
 module.exports = nextConfig;
-module.exports = withImages();

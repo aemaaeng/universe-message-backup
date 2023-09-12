@@ -13,9 +13,6 @@ const SNavContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
   height: 70px;
   margin-bottom: 20px;
   background-color: var(--lightPurple);

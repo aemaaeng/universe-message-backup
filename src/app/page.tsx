@@ -42,6 +42,7 @@ const SHomeContainer = styled.main`
 
   h1:not(#title) {
     font-size: 2.2rem;
+    height: 44.5px;
     color: var(--lightBlack);
     white-space: nowrap;
   }

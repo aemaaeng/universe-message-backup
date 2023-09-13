@@ -66,6 +66,23 @@ const SHomeContainer = styled.main`
       border-right: 3px solid black;
     }
   }
+
+  @media (max-width: 600px) {
+    /* 변해야 할 곳: title, h1:not(#title), p */
+    #title {
+      font-size: 2.5rem;
+    }
+
+    h1:not(#title) {
+      font-size: 1.3rem;
+      height: 1.3rem;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 0.85rem;
+    }
+  }
 `;
 
 const SEnterButton = styled.button`
@@ -83,6 +100,13 @@ const SEnterButton = styled.button`
   &:hover {
     cursor: pointer;
     transform: translateY(-2px);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 0.8rem;
+    margin-top: 10px;
+    padding: 10px 16px 12px 16px;
+    height: 40px;
   }
 `;
 

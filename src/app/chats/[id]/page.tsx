@@ -19,8 +19,8 @@ export default async function Chats(props: ChatProps) {
     <>
       <Navbar title={id} />
       <div id="chats">
-        {chat.map((el: ChatMessage[]) => {
-          return <GroupedByMin data={el} />;
+        {chat.map((el: ChatMessage[], idx: number) => {
+          return <GroupedByMin data={el} key={idx} />;
         })}
       </div>
     </>

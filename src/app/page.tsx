@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import styled from "styled-components";
-import { Montserrat, Bagel_Fat_One } from "next/font/google";
+import { Montserrat, Bagel_Fat_One, Orbit } from "next/font/google";
 import useTypingEffect from "@/hooks/useTypingEffect";
 
 const montserrat = Montserrat({
@@ -11,6 +11,13 @@ const montserrat = Montserrat({
 });
 
 const bagelFatOne = Bagel_Fat_One({
+  subsets: ["latin"],
+  style: "normal",
+  weight: "400",
+  display: "swap",
+});
+
+const orbit = Orbit({
   subsets: ["latin"],
   style: "normal",
   weight: "400",
@@ -36,6 +43,7 @@ const SHomeContainer = styled.main`
   h1:not(#title) {
     font-size: 2.2rem;
     color: var(--lightBlack);
+    white-space: nowrap;
   }
 
   #period {
@@ -44,17 +52,17 @@ const SHomeContainer = styled.main`
 
   #typing::after {
     content: "";
-    margin-left: 0.5rem;
-    border-right: 2px solid var(--deepPurple);
+    margin-left: 0.3rem;
+    border-right: 3px solid black;
     animation: cursor 0.9s infinite steps(2);
   }
 
   @keyframes cursor {
     from {
-      border-right: 2px solid var(--lightPurple);
+      border-right: 3px solid var(--lightPurple);
     }
     to {
-      border-right: 2px solid var(--deepPurple);
+      border-right: 3px solid black;
     }
   }
 `;
@@ -63,12 +71,13 @@ const SEnterButton = styled.button`
   outline: none;
   border: none;
   font-size: 1rem;
-  padding: 12px 18px;
+  padding: 12px 18px 14px 18px;
   background-color: var(--deepPurple);
   color: white;
   border-radius: 25px;
   margin-top: 20px;
   transition: 200ms;
+  height: 50px;
 
   &:hover {
     cursor: pointer;
@@ -77,13 +86,13 @@ const SEnterButton = styled.button`
 `;
 
 function Home() {
-  const word = useTypingEffect("KIHYUN Private Message", 100);
-  // const wordsToType = [
-  //   "KIHYUN Private Message",
-  //   "똑똑",
-  //   "뭐해요?",
-  //   "사랑하고 빠빠이♥️",
-  // ];
+  const wordsToType = [
+    "KIHYUN Private Message",
+    "똑똑",
+    "뭐해요?",
+    "사랑하고 빠빠이",
+  ];
+  const word = useTypingEffect(wordsToType, 100, 1000);
 
   return (
     <SHomeContainer>
@@ -93,10 +102,14 @@ function Home() {
       <h1 className={montserrat.className} id="typing">
         {word}
       </h1>
-      <p>몬스타엑스 기현 프라이빗 메시지 백업공간</p>
-      <p id="period">2022-03-10 ~ 2023-02-14</p>
+      <p className={orbit.className}>
+        몬스타엑스 기현 프라이빗 메시지 백업공간
+      </p>
+      <p className={orbit.className} id="period">
+        2022-03-10 ~ 2023-02-14
+      </p>
       <Link href="/chats">
-        <SEnterButton>입장하기</SEnterButton>
+        <SEnterButton className={orbit.className}>입장하기</SEnterButton>
       </Link>
     </SHomeContainer>
   );

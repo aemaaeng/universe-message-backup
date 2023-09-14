@@ -8,9 +8,6 @@ const nextConfig = withImages({
   images: {
     formats: ["image/avif", "image/webp"],
   },
-  compiler: {
-    styledComponents: true,
-  },
   swcMinify: true,
 });
 

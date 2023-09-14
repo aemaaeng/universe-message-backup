@@ -1,0 +1,30 @@
+.listContainer {
+  margin: 5px 0px;
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+}
+
+.textContainer {
+  background-color: var(--deepPurple);
+  padding: 10px 23px 10px 17px;
+  width: fit-content;
+  max-width: 255px;
+  border-radius: 3px 20px 20px 3px;
+}
+
+.text {
+  color: white;
+  line-height: 1.4rem;
+}
+
+.videoContainer {
+  border-radius: 3px 20px 20px 3px;
+  max-width: 300px;
+}
+
+.minute {
+  color: var(--gray);
+  font-size: 0.8rem;
+  margin-bottom: 3px;
+}

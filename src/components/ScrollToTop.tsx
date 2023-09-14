@@ -1,9 +1,8 @@
 "use client";
 
+import styles from "./ScrollToTop.module.css";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import topArrow from "@/icons/toparrow.svg";
-import styled from "styled-components";
 import {
   motion,
   Variants,
@@ -11,22 +10,6 @@ import {
   useAnimationControls,
   useMotionValueEvent,
 } from "framer-motion";
-
-const SScrollToTop = styled(motion.button)`
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  z-index: 999;
-  background-color: transparent;
-  outline: none;
-  border: none;
-  border-radius: 20px;
-  padding: 7px 10px;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
 
 const ScrollToTopVariants: Variants = {
   hide: { display: "none" },
@@ -48,14 +31,20 @@ function ScrollToTop() {
   }
 
   return (
-    <SScrollToTop
+    <motion.button
+      className={styles.motionButton}
       variants={ScrollToTopVariants}
       initial="hide"
       animate={controls}
       onClick={handleScrollToTop}
     >
-      <Image src={topArrow} alt="scrollToTop" width="17" height="20" />
-    </SScrollToTop>
+      <Image
+        src="/icon/topArrow.svg"
+        alt="scrollToTop"
+        width="17"
+        height="20"
+      />
+    </motion.button>
   );
 }
 

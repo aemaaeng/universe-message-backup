@@ -1,5 +1,6 @@
+import withPlaiceholder from "@plaiceholder/next";
+import withImages from "next-images";
 /** @type {import('next').NextConfig} */
-const withImages = require("next-images");
 
 const nextConfig = withImages({
   experimental: {
@@ -11,4 +12,4 @@ const nextConfig = withImages({
   swcMinify: true,
 });
 
-module.exports = nextConfig;
+export default withPlaiceholder(nextConfig);

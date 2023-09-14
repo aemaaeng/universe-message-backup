@@ -1,0 +1,15 @@
+.motionButton {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 999;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 10px;
+}
+
+.motionButton:hover {
+  cursor: pointer;
+}

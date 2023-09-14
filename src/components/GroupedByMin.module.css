@@ -1,0 +1,31 @@
+.groupContainer {
+  display: flex;
+  margin: 10px 0px;
+  padding-left: 10px;
+}
+
+.profileImg > img {
+  border-radius: 50%;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.bubbleContainer {
+  padding-left: 10px;
+}
+
+.bubbleContainer img {
+  width: 65vw;
+  max-width: 300px;
+  object-fit: contain;
+  border-radius: 3px 20px 20px 3px;
+}
+
+.bubbleContainer li:last-child > *:not(span) {
+  border-radius: 3px 20px 20px 20px;
+}
+
+.profileName {
+  font-size: 0.9rem;
+  font-weight: 700;
+}

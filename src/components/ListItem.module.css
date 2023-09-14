@@ -1,0 +1,32 @@
+.date {
+  display: flex;
+  background-color: white;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding: 30px 20px;
+  border-radius: 5px;
+}
+
+.link::after {
+  background: none repeat scroll 0 0 transparent;
+  position: relative;
+  bottom: -5px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  background: var(--deepPurple);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.iconGroup {
+  display: flex;
+  align-items: center;
+}

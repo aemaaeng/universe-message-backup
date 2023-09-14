@@ -1,6 +1,5 @@
-"use client";
-import styled from "styled-components";
 import Image from "next/image";
+import styles from "./Bubble.module.css";
 
 export type ChatMessage = {
   nickname: string;
@@ -8,37 +7,6 @@ export type ChatMessage = {
   message: string;
   datetime: string;
 };
-
-const SContainer = styled.li`
-  margin: 5px 0px;
-  display: flex;
-  align-items: flex-end;
-  gap: 7px;
-`;
-
-const STextContainer = styled.div`
-  background-color: var(--deepPurple);
-  padding: 10px 23px 10px 17px;
-  width: fit-content;
-  max-width: 255px;
-  border-radius: 3px 20px 20px 3px;
-
-  .text {
-    color: white;
-    line-height: 1.4rem;
-  }
-`;
-
-const SVideoContainer = styled.video`
-  border-radius: 3px 20px 20px 3px;
-  max-width: 300px;
-`;
-
-const SMinute = styled.span`
-  color: var(--gray);
-  font-size: 0.8rem;
-  margin-bottom: 3px;
-`;
 
 function Bubble({
   data,
@@ -53,11 +21,11 @@ function Bubble({
 
   // content의 타입에 따라 다르게 보여주기
   return (
-    <SContainer>
+    <li className={styles.listContainer}>
       {data.type === "TEXT" ? (
-        <STextContainer>
-          <div className="text">{data.message}</div>
-        </STextContainer>
+        <div className={styles.textContainer}>
+          <div className={styles.text}>{data.message}</div>
+        </div>
       ) : null}
       {data.type === "IMAGE" ? (
         <Image
@@ -70,7 +38,8 @@ function Bubble({
         />
       ) : null}
       {data.type === "VOD" ? (
-        <SVideoContainer
+        <video
+          className={styles.videoContainer}
           width="100%"
           height="420"
           preload="metadata"
@@ -79,13 +48,15 @@ function Bubble({
         >
           <source src={`/media/${data.message}#t=0.1`} />
           Your browser does not support the video tag.
-        </SVideoContainer>
+        </video>
       ) : null}
       {data.type === "VOICE" ? (
         <audio src={`/media/${data.message}`} controls></audio>
       ) : null}
-      {isLastBubble ? <SMinute>{data.datetime.slice(11, 16)}</SMinute> : null}
-    </SContainer>
+      {isLastBubble ? (
+        <span className={styles.minute}>{data.datetime.slice(11, 16)}</span>
+      ) : null}
+    </li>
   );
 }
 

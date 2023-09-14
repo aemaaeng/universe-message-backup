@@ -1,5 +1,5 @@
-import Image from "next/image";
 import styles from "./Bubble.module.css";
+import ImgWithPlaceholder from "./ImgWithPlaceholder";
 
 export type ChatMessage = {
   nickname: string;
@@ -28,14 +28,7 @@ function Bubble({
         </div>
       ) : null}
       {data.type === "IMAGE" ? (
-        <Image
-          src={`/media/${data.message}`}
-          alt={`${data.message}`}
-          width={0}
-          height={0}
-          sizes="65vw"
-          style={{ height: "auto" }}
-        />
+        <ImgWithPlaceholder src={`/media/${data.message}`} />
       ) : null}
       {data.type === "VOD" ? (
         <video

@@ -18,7 +18,7 @@ function ListItem({
 
   return (
     <li className={styles.date} key={id}>
-      <Link className={styles.link} href={`chats/${content}`}>
+      <Link className={styles.link} href={`chat/${content}`}>
         {content}
       </Link>
       <div className={styles.iconGroup}>

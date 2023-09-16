@@ -58,6 +58,10 @@ a {
   grid-template-columns: repeat(3, 1fr);
 }
 
+#chatContainer {
+  padding-bottom: 10px;
+}
+
 @media (max-width: 800px) {
   #chatlist {
     grid-template-columns: repeat(2, 1fr);
@@ -68,8 +72,4 @@ a {
   #chatlist {
     grid-template-columns: 1fr;
   }
-}
-
-#chats > div:last-child {
-  margin-bottom: 15px;
 }

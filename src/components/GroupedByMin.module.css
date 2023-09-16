@@ -1,7 +1,7 @@
 .groupContainer {
   display: flex;
   margin: 10px 0px;
-  padding-left: 10px;
+  padding-left: 13px;
 }
 
 .profileImg > img {
@@ -28,4 +28,36 @@
 .profileName {
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+/* iphone 8 */
+@media (max-width: 375px) {
+  .profileImg > img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .profileName {
+    font-size: 0.85rem;
+  }
+
+  .bubbleContainer {
+    padding-left: 8px;
+  }
+}
+
+/* iphone SE */
+@media (max-width: 320px) {
+  .profileImg > img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profileName {
+    font-size: 0.75rem;
+  }
+
+  .bubbleContainer {
+    padding-left: 6px;
+  }
 }

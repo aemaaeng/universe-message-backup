@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import GroupedByMin from "@/components/GroupedByMin";
 import { ChatMessage } from "@/components/Bubble";
-import Navbar from "@/components/Navbar";
 
 type ChatProps = {
   params: { id: string };
@@ -26,13 +25,10 @@ export default async function Chats(props: ChatProps) {
   }
 
   return (
-    <>
-      <Navbar title={id} />
-      <div id="chats">
-        {chat.map((el: ChatMessage[], idx: number) => {
-          return <GroupedByMin data={el} key={idx} />;
-        })}
-      </div>
-    </>
+    <div id="chatContainer">
+      {chat.map((el: ChatMessage[], idx: number) => {
+        return <GroupedByMin data={el} key={idx} />;
+      })}
+    </div>
   );
 }

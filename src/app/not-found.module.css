@@ -1,0 +1,11 @@
+.notFoundContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.notFoundContainer h1 {
+  font-size: 3.4rem;
+  padding-bottom: 10px;
+}

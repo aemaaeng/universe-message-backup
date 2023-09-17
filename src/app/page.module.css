@@ -56,7 +56,6 @@
 }
 
 .enterButton:hover {
-  cursor: pointer;
   transform: translateY(-2px);
 }
 

@@ -73,3 +73,7 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+button:hover {
+  cursor: pointer;
+}

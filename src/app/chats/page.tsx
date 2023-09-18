@@ -38,8 +38,28 @@ export default function ChatList() {
       .catch((err) => console.error(err));
   }, []);
 
-  function filterData(arr: Item[], type: string) {
+  useEffect(() => {
+    let arr: Item[] = originalList.slice();
+    const filters = checkEnabledFilters();
+    console.log(filters);
+    while (filters.length) {
+      const type = filters.shift()!;
+      arr = filterData(arr, type);
+    }
+    setList(arr);
+  }, [filterStates]);
+
+  function filterData(arr: Item[], type: string): Item[] {
+    if (type === "all") return originalList;
     return arr.filter((el) => el[type] === true);
+  }
+
+  function checkEnabledFilters(): string[] {
+    const arr = Object.entries(filterStates);
+    const enabledFilters = arr
+      .filter((el) => el[1] === true)
+      .map((el) => el[0]);
+    return enabledFilters;
   }
 
   function handleFilterButtonClick(type: string) {
@@ -50,7 +70,6 @@ export default function ChatList() {
         VOD: false,
         VOICE: false,
       });
-      setList(originalList);
     } else {
       setFilterStates((prev) => {
         return {
@@ -59,20 +78,18 @@ export default function ChatList() {
         };
       });
 
-      const filterEnabled: boolean = [
-        filterStates.IMAGE,
-        filterStates.VOD,
-        filterStates.VOICE,
-      ].some((isSelected) => isSelected === true);
+      const filterEnabled: boolean =
+        filterStates.IMAGE || filterStates.VOD || filterStates.VOICE;
 
       if (!filterEnabled) {
         setFilterStates((prev) => {
           return { ...prev, all: false };
         });
+      } else {
+        setFilterStates((prev) => {
+          return { ...prev, all: true };
+        });
       }
-
-      const filtered = filterData(list, type);
-      setList(filtered);
     }
   }
 

@@ -1,0 +1,45 @@
+.default {
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  padding: 10px 20px;
+}
+
+.selected {
+  background-color: var(--deepPurple);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  padding: 10px 20px;
+}
+
+@media (max-width: 415px) {
+  .default {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+
+  .selected {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 344px) {
+  .default {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
+
+  .selected {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
+}

@@ -53,7 +53,8 @@ a {
 
 #chatlist {
   display: grid;
-  margin: 0px 15px 15px 15px;
+  margin: 0px 15px;
+  padding-bottom: 15px;
   gap: 15px;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -72,4 +73,8 @@ a {
   #chatlist {
     grid-template-columns: 1fr;
   }
+}
+
+button:hover {
+  cursor: pointer;
 }

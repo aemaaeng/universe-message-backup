@@ -19,3 +19,27 @@
   border: none;
   padding: 10px 20px;
 }
+
+@media (max-width: 400px) {
+  .default {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+
+  .selected {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .default {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
+
+  .selected {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
+}

@@ -25,6 +25,7 @@ export default function ChatList() {
     VOD: false,
     VOICE: false,
   });
+  const [filterChanged, setFilterChanged] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -38,16 +39,29 @@ export default function ChatList() {
       .catch((err) => console.error(err));
   }, []);
 
+  // 필터링 진행
   useEffect(() => {
     let arr: Item[] = originalList.slice();
     const filters = checkEnabledFilters();
-    console.log(filters);
     while (filters.length) {
       const type = filters.shift()!;
       arr = filterData(arr, type);
     }
     setList(arr);
   }, [filterStates]);
+
+  useEffect(() => {
+    const filters = checkEnabledFilters();
+    if (!filterStates.all && filters.length === 0) {
+      setFilterStates((prev) => {
+        return { ...prev, all: true };
+      });
+    } else if (filters.length > 0) {
+      setFilterStates((prev) => {
+        return { ...prev, all: false };
+      });
+    }
+  }, [filterChanged]);
 
   function filterData(arr: Item[], type: string): Item[] {
     if (type === "all") return originalList;
@@ -57,7 +71,9 @@ export default function ChatList() {
   function checkEnabledFilters(): string[] {
     const arr = Object.entries(filterStates);
     const enabledFilters = arr
-      .filter((el) => el[1] === true)
+      .filter((el) => {
+        return el[0] !== "all" && el[1] === true;
+      })
       .map((el) => el[0]);
     return enabledFilters;
   }
@@ -77,19 +93,7 @@ export default function ChatList() {
           [type]: !prev[type],
         };
       });
-
-      const filterEnabled: boolean =
-        filterStates.IMAGE || filterStates.VOD || filterStates.VOICE;
-
-      if (!filterEnabled) {
-        setFilterStates((prev) => {
-          return { ...prev, all: false };
-        });
-      } else {
-        setFilterStates((prev) => {
-          return { ...prev, all: true };
-        });
-      }
+      setFilterChanged(!filterChanged);
     }
   }
 

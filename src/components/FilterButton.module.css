@@ -20,7 +20,7 @@
   padding: 10px 20px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   .default {
     font-size: 0.8rem;
     padding: 8px 16px;
@@ -32,7 +32,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 344px) {
   .default {
     font-size: 0.7rem;
     padding: 6px 12px;

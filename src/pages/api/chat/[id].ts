@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import data from "../../../../data.json";
 import { ChatMessage } from "@/components/Bubble";
 
-interface GroupedByDate {
+export interface GroupedByDate {
   date: string;
   chats: ChatMessage[][];
 }

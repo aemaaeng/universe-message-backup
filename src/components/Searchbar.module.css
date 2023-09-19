@@ -11,8 +11,7 @@
 
 .searchBarContainer .searchInput {
   background-color: transparent;
-  border: 2px solid var(--deepPurple);
-  border-radius: 25px;
+  border: none;
   text-indent: 40px;
   height: 40px;
   line-height: 20px;
@@ -34,7 +33,24 @@
 }
 
 .searchInput:focus {
-  width: 200px;
+  width: 300px;
   cursor: text;
+  border: 2px solid var(--deepPurple);
   border-radius: 10px;
+}
+
+@media (max-width: 755px) {
+  .searchInput:focus {
+    width: 50%;
+    cursor: text;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 2px solid var(--deepPurple);
+  }
+}
+
+@media (max-width: 413px) {
+  .searchInput:focus {
+    width: 100%;
+  }
 }

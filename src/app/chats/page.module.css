@@ -21,13 +21,16 @@
   gap: 10px;
 }
 
-@media (max-width: 578px) {
+@media (max-width: 755px) {
   .barContainer {
     display: block;
   }
+  .buttonContainer {
+    margin-bottom: 10px;
+  }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 413px) {
   .text {
     font-size: 0.8rem;
   }

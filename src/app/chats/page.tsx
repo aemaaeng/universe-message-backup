@@ -6,6 +6,7 @@ import { Item } from "@/pages/api/list";
 import styles from "./page.module.css";
 import FilterButton from "@/components/FilterButton";
 import Loading from "@/components/Loading";
+import Searchbar from "@/components/Searchbar";
 
 interface FilterStates {
   [index: string]: boolean;
@@ -99,30 +100,33 @@ export default function ChatList() {
 
   return (
     <>
-      <div className={styles.buttonContainer}>
-        <FilterButton
-          label="전체"
-          state={filterStates.all}
-          onClick={() => handleFilterButtonClick("all")}
-        />
-        <span className={styles.text}>포함: </span>
-        <div className={styles.optionContainer}>
+      <div className={styles.barContainer}>
+        <div className={styles.buttonContainer}>
           <FilterButton
-            label="사진"
-            state={filterStates.IMAGE}
-            onClick={() => handleFilterButtonClick("IMAGE")}
+            label="전체"
+            state={filterStates.all}
+            onClick={() => handleFilterButtonClick("all")}
           />
-          <FilterButton
-            label="동영상"
-            state={filterStates.VOD}
-            onClick={() => handleFilterButtonClick("VOD")}
-          />
-          <FilterButton
-            label="음성"
-            state={filterStates.VOICE}
-            onClick={() => handleFilterButtonClick("VOICE")}
-          />
+          <span className={styles.text}>포함: </span>
+          <div className={styles.optionContainer}>
+            <FilterButton
+              label="사진"
+              state={filterStates.IMAGE}
+              onClick={() => handleFilterButtonClick("IMAGE")}
+            />
+            <FilterButton
+              label="동영상"
+              state={filterStates.VOD}
+              onClick={() => handleFilterButtonClick("VOD")}
+            />
+            <FilterButton
+              label="음성"
+              state={filterStates.VOICE}
+              onClick={() => handleFilterButtonClick("VOICE")}
+            />
+          </div>
         </div>
+        <Searchbar />
       </div>
       {isLoading ? (
         <Loading />

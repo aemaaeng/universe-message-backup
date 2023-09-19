@@ -1,7 +1,13 @@
+.barContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 15px 15px 15px;
+}
+
 .buttonContainer {
   display: flex;
   align-items: center;
-  margin: 0px 15px 15px 15px;
 }
 
 .text {
@@ -13,6 +19,12 @@
 .optionContainer {
   display: flex;
   gap: 10px;
+}
+
+@media (max-width: 578px) {
+  .barContainer {
+    display: block;
+  }
 }
 
 @media (max-width: 415px) {

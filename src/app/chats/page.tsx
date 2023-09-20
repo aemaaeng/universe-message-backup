@@ -113,6 +113,10 @@ export default function ChatList() {
 
   function handleEnterKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
+    if (keywordInput.length === 0) {
+      window.alert("검색어를 입력해주세요.");
+      return;
+    }
     setIsLoading(true);
     fetch(`http://localhost:3000/api/search?keyword=${keywordInput}`)
       .then((res) => res.json())
@@ -153,6 +157,8 @@ export default function ChatList() {
       </div>
       {isLoading ? (
         <Loading />
+      ) : list.length === 0 ? (
+        <div>No results found</div>
       ) : (
         <ol id="chatlist">
           {list.map((item: Item, index: number) => {

@@ -29,6 +29,12 @@ export default function ChatList() {
   const [filterChanged, setFilterChanged] = useState(false);
   const [keywordInput, setKeywordInput] = useState("");
 
+  const filterTypes = [
+    { label: "사진", type: "IMAGE" },
+    { label: "동영상", type: "VOD" },
+    { label: "음성", type: "VOICE" },
+  ];
+
   // fetch Initial Data
   useEffect(() => {
     setIsLoading(true);
@@ -128,21 +134,14 @@ export default function ChatList() {
           />
           <span className={styles.text}>포함: </span>
           <div className={styles.optionContainer}>
-            <FilterButton
-              label="사진"
-              state={filterStates.IMAGE}
-              onClick={() => handleFilterButtonClick("IMAGE")}
-            />
-            <FilterButton
-              label="동영상"
-              state={filterStates.VOD}
-              onClick={() => handleFilterButtonClick("VOD")}
-            />
-            <FilterButton
-              label="음성"
-              state={filterStates.VOICE}
-              onClick={() => handleFilterButtonClick("VOICE")}
-            />
+            {filterTypes.map((el, idx) => (
+              <FilterButton
+                key={idx}
+                label={el.label}
+                state={filterStates[el.type]}
+                onClick={() => handleFilterButtonClick(el.type)}
+              />
+            ))}
           </div>
         </div>
         <Searchbar

@@ -123,7 +123,6 @@ export default function ChatList() {
       .then((res) => {
         setIsLoading(false);
         setList(res.result);
-        setKeywordInput("");
       })
       .catch((err) => console.error(err));
   }
@@ -172,6 +171,7 @@ export default function ChatList() {
                 id={index}
                 media={media}
                 message={message}
+                keyword={keywordInput}
               />
             );
           })}

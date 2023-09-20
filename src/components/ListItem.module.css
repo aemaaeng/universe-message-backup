@@ -39,3 +39,7 @@
   font-size: 0.9rem;
   color: var(--gray);
 }
+
+.message > mark {
+  color: inherit;
+}

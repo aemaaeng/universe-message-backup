@@ -2,6 +2,7 @@ import styles from "./ListItem.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import { Item } from "@/pages/api/list";
+import highlightKeyword from "@/utils/highlightKeyword";
 
 type Media = Omit<Item, "date">;
 
@@ -10,11 +11,13 @@ function ListItem({
   id,
   media,
   message,
+  keyword,
 }: {
   content: string;
   id: number;
   media: Media;
   message: string | undefined;
+  keyword: string;
 }) {
   const { IMAGE, VOD, VOICE } = media;
 
@@ -51,7 +54,11 @@ function ListItem({
           ) : null}
         </div>
       </div>
-      {message ? <div className={styles.message}>{message}</div> : null}
+      {message ? (
+        <div className={styles.message}>
+          {highlightKeyword(message, keyword)}
+        </div>
+      ) : null}
     </li>
   );
 }

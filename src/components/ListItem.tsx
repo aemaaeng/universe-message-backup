@@ -9,39 +9,49 @@ function ListItem({
   content,
   id,
   media,
+  message,
 }: {
   content: string;
   id: number;
   media: Media;
+  message: string | undefined;
 }) {
   const { IMAGE, VOD, VOICE } = media;
 
   return (
-    <li className={styles.date} key={id}>
-      <Link className={styles.link} href={`chat/${content}`}>
-        {content}
-      </Link>
-      <div className={styles.iconGroup}>
-        {IMAGE ? (
-          <Image src="/icon/picIcon.svg" width="20" height="18" alt="picIcon" />
-        ) : null}
-        {VOD ? (
-          <Image
-            src="icon/videoIcon.svg"
-            width="24"
-            height="23"
-            alt="videoIcon"
-          />
-        ) : null}
-        {VOICE ? (
-          <Image
-            src="icon/voiceIcon.svg"
-            width="20"
-            height="18"
-            alt="voiceIcon"
-          />
-        ) : null}
+    <li className={styles.itemContainer} key={id}>
+      <div className={styles.dateContainer}>
+        <Link className={styles.link} href={`chat/${content}`}>
+          {content}
+        </Link>
+        <div className={styles.iconGroup}>
+          {IMAGE ? (
+            <Image
+              src="/icon/picIcon.svg"
+              width="20"
+              height="18"
+              alt="picIcon"
+            />
+          ) : null}
+          {VOD ? (
+            <Image
+              src="icon/videoIcon.svg"
+              width="24"
+              height="23"
+              alt="videoIcon"
+            />
+          ) : null}
+          {VOICE ? (
+            <Image
+              src="icon/voiceIcon.svg"
+              width="20"
+              height="18"
+              alt="voiceIcon"
+            />
+          ) : null}
+        </div>
       </div>
+      {message ? <div className={styles.message}>{message}</div> : null}
     </li>
   );
 }

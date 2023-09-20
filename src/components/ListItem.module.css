@@ -1,11 +1,14 @@
-.date {
-  display: flex;
+.itemContainer {
   background-color: white;
+  padding: 30px 20px;
+  border-radius: 5px;
+}
+
+.dateContainer {
+  display: flex;
   gap: 10px;
   font-weight: 600;
   font-size: 1.3rem;
-  padding: 30px 20px;
-  border-radius: 5px;
 }
 
 .link::after {
@@ -29,4 +32,10 @@
 .iconGroup {
   display: flex;
   align-items: center;
+}
+
+.message {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--gray);
 }

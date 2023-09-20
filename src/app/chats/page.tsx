@@ -27,7 +27,9 @@ export default function ChatList() {
     VOICE: false,
   });
   const [filterChanged, setFilterChanged] = useState(false);
+  const [keywordInput, setKeywordInput] = useState("");
 
+  // fetch Initial Data
   useEffect(() => {
     setIsLoading(true);
     fetch("http://localhost:3000/api/list")
@@ -51,6 +53,7 @@ export default function ChatList() {
     setList(arr);
   }, [filterStates]);
 
+  // 선택된 필터 검증
   useEffect(() => {
     const filters = checkEnabledFilters();
     if (!filterStates.all && filters.length === 0) {
@@ -98,6 +101,22 @@ export default function ChatList() {
     }
   }
 
+  function handleKeywordInput(e: React.ChangeEvent<HTMLInputElement>) {
+    setKeywordInput(e.target.value);
+  }
+
+  function handleEnterKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key !== "Enter") return;
+    setIsLoading(true);
+    fetch(`http://localhost:3000/api/search?keyword=${keywordInput}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setIsLoading(false);
+        setList(res.result);
+      })
+      .catch((err) => console.error(err));
+  }
+
   return (
     <>
       <div className={styles.barContainer}>
@@ -126,14 +145,18 @@ export default function ChatList() {
             />
           </div>
         </div>
-        <Searchbar />
+        <Searchbar
+          value={keywordInput}
+          onChange={handleKeywordInput}
+          onKeyUp={handleEnterKeyPress}
+        />
       </div>
       {isLoading ? (
         <Loading />
       ) : (
         <ol id="chatlist">
           {list.map((item: Item, index: number) => {
-            const { IMAGE, VOD, VOICE } = item;
+            const { IMAGE, VOD, VOICE, message } = item;
             const media = { IMAGE, VOD, VOICE };
 
             return (
@@ -142,6 +165,7 @@ export default function ChatList() {
                 content={item.date}
                 id={index}
                 media={media}
+                message={message}
               />
             );
           })}

@@ -2,7 +2,15 @@
 
 import styles from "./Searchbar.module.css";
 
-function Searchbar() {
+function Searchbar({
+  value,
+  onChange,
+  onKeyUp,
+}: {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+}) {
   return (
     <div className={styles.searchBarContainer}>
       <label htmlFor="searchInput">Search</label>
@@ -13,6 +21,9 @@ function Searchbar() {
         id="searchInput"
         className={styles.searchInput}
         autoComplete="off"
+        onChange={onChange}
+        value={value}
+        onKeyUp={onKeyUp}
       />
     </div>
   );

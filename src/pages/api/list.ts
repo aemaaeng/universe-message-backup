@@ -8,6 +8,7 @@ export interface Item {
   IMAGE?: boolean;
   VOD?: boolean;
   VOICE?: boolean;
+  message?: string;
 }
 
 type DateList = Item[];

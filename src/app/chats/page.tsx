@@ -6,6 +6,7 @@ import { Item } from "@/pages/api/list";
 import styles from "./page.module.css";
 import FilterButton from "@/components/FilterButton";
 import Loading from "@/components/Loading";
+import Searchbar from "@/components/Searchbar";
 
 interface FilterStates {
   [index: string]: boolean;
@@ -26,7 +27,15 @@ export default function ChatList() {
     VOICE: false,
   });
   const [filterChanged, setFilterChanged] = useState(false);
+  const [keywordInput, setKeywordInput] = useState("");
 
+  const filterTypes = [
+    { label: "사진", type: "IMAGE" },
+    { label: "동영상", type: "VOD" },
+    { label: "음성", type: "VOICE" },
+  ];
+
+  // fetch Initial Data
   useEffect(() => {
     setIsLoading(true);
     fetch("http://localhost:3000/api/list")
@@ -50,6 +59,7 @@ export default function ChatList() {
     setList(arr);
   }, [filterStates]);
 
+  // 선택된 필터 검증
   useEffect(() => {
     const filters = checkEnabledFilters();
     if (!filterStates.all && filters.length === 0) {
@@ -97,39 +107,61 @@ export default function ChatList() {
     }
   }
 
+  function handleKeywordInput(e: React.ChangeEvent<HTMLInputElement>) {
+    setKeywordInput(e.target.value);
+  }
+
+  function handleEnterKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
+    if (keywordInput.length === 0) {
+      window.alert("검색어를 입력해주세요.");
+      return;
+    }
+    setIsLoading(true);
+    fetch(`http://localhost:3000/api/search?keyword=${keywordInput}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setIsLoading(false);
+        setList(res.result);
+      })
+      .catch((err) => console.error(err));
+  }
+
   return (
     <>
-      <div className={styles.buttonContainer}>
-        <FilterButton
-          label="전체"
-          state={filterStates.all}
-          onClick={() => handleFilterButtonClick("all")}
-        />
-        <span className={styles.text}>포함: </span>
-        <div className={styles.optionContainer}>
+      <div className={styles.barContainer}>
+        <div className={styles.buttonContainer}>
           <FilterButton
-            label="사진"
-            state={filterStates.IMAGE}
-            onClick={() => handleFilterButtonClick("IMAGE")}
+            label="전체"
+            state={filterStates.all}
+            onClick={() => handleFilterButtonClick("all")}
           />
-          <FilterButton
-            label="동영상"
-            state={filterStates.VOD}
-            onClick={() => handleFilterButtonClick("VOD")}
-          />
-          <FilterButton
-            label="음성"
-            state={filterStates.VOICE}
-            onClick={() => handleFilterButtonClick("VOICE")}
-          />
+          <span className={styles.text}>포함: </span>
+          <div className={styles.optionContainer}>
+            {filterTypes.map((el, idx) => (
+              <FilterButton
+                key={idx}
+                label={el.label}
+                state={filterStates[el.type]}
+                onClick={() => handleFilterButtonClick(el.type)}
+              />
+            ))}
+          </div>
         </div>
+        <Searchbar
+          value={keywordInput}
+          onChange={handleKeywordInput}
+          onKeyDown={handleEnterKeyPress}
+        />
       </div>
       {isLoading ? (
         <Loading />
+      ) : keywordInput.length !== 0 && list.length === 0 ? (
+        <div className={styles.noResults}>검색 결과가 없습니다.</div>
       ) : (
         <ol id="chatlist">
           {list.map((item: Item, index: number) => {
-            const { IMAGE, VOD, VOICE } = item;
+            const { IMAGE, VOD, VOICE, message } = item;
             const media = { IMAGE, VOD, VOICE };
 
             return (
@@ -138,6 +170,8 @@ export default function ChatList() {
                 content={item.date}
                 id={index}
                 media={media}
+                message={message}
+                keyword={keywordInput}
               />
             );
           })}

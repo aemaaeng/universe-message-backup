@@ -1,7 +1,13 @@
+.barContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 15px 15px 15px;
+}
+
 .buttonContainer {
   display: flex;
   align-items: center;
-  margin: 0px 15px 15px 15px;
 }
 
 .text {
@@ -15,7 +21,21 @@
   gap: 10px;
 }
 
-@media (max-width: 415px) {
+.noResults {
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 755px) {
+  .barContainer {
+    display: block;
+  }
+  .buttonContainer {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 413px) {
   .text {
     font-size: 0.8rem;
   }

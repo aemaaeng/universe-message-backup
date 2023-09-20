@@ -21,6 +21,11 @@
   gap: 10px;
 }
 
+.noResults {
+  margin-top: 10px;
+  text-align: center;
+}
+
 @media (max-width: 755px) {
   .barContainer {
     display: block;

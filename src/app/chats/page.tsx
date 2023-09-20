@@ -158,7 +158,7 @@ export default function ChatList() {
       {isLoading ? (
         <Loading />
       ) : list.length === 0 ? (
-        <div>No results found</div>
+        <div className={styles.noResults}>검색 결과가 없습니다.</div>
       ) : (
         <ol id="chatlist">
           {list.map((item: Item, index: number) => {

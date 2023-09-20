@@ -5,11 +5,11 @@ import styles from "./Searchbar.module.css";
 function Searchbar({
   value,
   onChange,
-  onKeyUp,
+  onKeyDown,
 }: {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onKeyUp: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }) {
   return (
     <div className={styles.searchBarContainer}>
@@ -23,7 +23,7 @@ function Searchbar({
         autoComplete="off"
         onChange={onChange}
         value={value}
-        onKeyUp={onKeyUp}
+        onKeyDown={onKeyDown}
       />
     </div>
   );

@@ -112,13 +112,14 @@ export default function ChatList() {
   }
 
   function handleEnterKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key !== "Enter") return;
+    if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
     setIsLoading(true);
     fetch(`http://localhost:3000/api/search?keyword=${keywordInput}`)
       .then((res) => res.json())
       .then((res) => {
         setIsLoading(false);
         setList(res.result);
+        setKeywordInput("");
       })
       .catch((err) => console.error(err));
   }
@@ -147,7 +148,7 @@ export default function ChatList() {
         <Searchbar
           value={keywordInput}
           onChange={handleKeywordInput}
-          onKeyUp={handleEnterKeyPress}
+          onKeyDown={handleEnterKeyPress}
         />
       </div>
       {isLoading ? (

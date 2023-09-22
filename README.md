@@ -31,7 +31,7 @@
 
 <img src="https://github.com/aemaaeng/universe-message-backup/assets/78579776/e491ebee-25e8-45cb-b350-e84bee905fd6" width="350"/>
 
-`setTimeout`을 이용해 타이핑 효과를 구현하였습니다.
+`setInterval`을 이용해 타이핑 효과를 구현하였습니다.
 
 ### 채팅 목록
 

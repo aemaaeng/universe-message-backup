@@ -8,6 +8,10 @@ import FilterButton from "@/components/FilterButton";
 import Loading from "@/components/Loading";
 import Searchbar from "@/components/Searchbar";
 
+const IMAGE = "IMAGE";
+const VOD = "VOD";
+const VOICE = "VOICE";
+
 interface FilterStates {
   [index: string]: boolean;
   all: boolean;
@@ -30,9 +34,9 @@ export default function ChatList() {
   const [keywordInput, setKeywordInput] = useState("");
 
   const filterTypes = [
-    { label: "사진", type: "IMAGE" },
-    { label: "동영상", type: "VOD" },
-    { label: "음성", type: "VOICE" },
+    { label: "사진", type: IMAGE },
+    { label: "동영상", type: VOD },
+    { label: "음성", type: VOICE },
   ];
 
   // fetch Initial Data

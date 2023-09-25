@@ -39,7 +39,7 @@ function ScrollToTop() {
       onClick={handleScrollToTop}
     >
       <Image
-        src="/icon/topArrow.svg"
+        src="/icon/toparrow.svg"
         alt="scrollToTop"
         width="17"
         height="20"

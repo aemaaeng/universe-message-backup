@@ -42,7 +42,7 @@ export default function ChatList() {
   // fetch Initial Data
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:3000/api/list")
+    fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/api/list`)
       .then((res) => res.json())
       .then((res) => {
         setIsLoading(false);
@@ -122,7 +122,9 @@ export default function ChatList() {
       return;
     }
     setIsLoading(true);
-    fetch(`http://localhost:3000/api/search?keyword=${keywordInput}`)
+    fetch(
+      `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/search?keyword=${keywordInput}`
+    )
       .then((res) => res.json())
       .then((res) => {
         setIsLoading(false);

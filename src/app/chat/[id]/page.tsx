@@ -7,11 +7,14 @@ type ChatProps = {
 };
 
 async function fetchChat(id: string) {
-  const resp = await fetch(`http://localhost:3000/api/chat/${id}`, {
-    headers: {
-      Accept: "application/json",
-    },
-  });
+  const resp = await fetch(
+    `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/chat/${id}`,
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
   if (!resp.ok) return undefined;
   return resp.json();
 }

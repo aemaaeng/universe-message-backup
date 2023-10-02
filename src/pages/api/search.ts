@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import data from "../../../data.json";
 import { Item } from "./list";
 import { GroupedByDate } from "./chat/[id]";
+import { cors, runMiddleware } from "../../utils/cors";
 
 const assertedData: GroupedByDate[] = data as GroupedByDate[];
 
@@ -32,12 +33,17 @@ function searchMessage(keyword: string) {
   return results;
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   let { keyword } = req.query;
   if (Array.isArray(keyword)) {
     keyword = keyword.join("");
   }
   const result = searchMessage(keyword!);
+
+  await runMiddleware(req, res, cors);
 
   res.status(200).json({ result: result });
 }

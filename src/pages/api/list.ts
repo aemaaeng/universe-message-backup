@@ -1,6 +1,7 @@
 // 날짜 목록을 리턴하는 핸들러
 import type { NextApiRequest, NextApiResponse } from "next";
 import data from "../../../data.json";
+import { cors, runMiddleware } from "../../utils/cors";
 
 export interface Item {
   [key: string]: string | boolean | undefined;
@@ -13,7 +14,10 @@ export interface Item {
 
 type DateList = Item[];
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const datelist: DateList = [];
 
   data.forEach((el) => {
@@ -28,6 +32,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     datelist.push(obj);
   });
+
+  await runMiddleware(req, res, cors);
 
   res.status(200).json(datelist);
 }

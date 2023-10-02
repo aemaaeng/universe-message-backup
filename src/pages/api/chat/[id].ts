@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import data from "../../../../data.json";
 import { ChatMessage } from "@/components/Bubble";
+import { cors, runMiddleware } from "../../../utils/cors";
 
 export interface GroupedByDate {
   date: string;
@@ -32,13 +33,18 @@ function binary_search(
   }
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { id } = req.query;
 
   if (typeof id === "string") {
     const chat = binary_search(assertedData, id, 0, assertedData.length - 1);
-    if (chat) res.status(200).json(chat);
-    else res.status(404).json({ error: "Chat not found" });
+    if (chat) {
+      await runMiddleware(req, res, cors);
+      res.status(200).json(chat);
+    } else res.status(404).json({ error: "Chat not found" });
   } else {
     res.status(404).json({ error: "Invalid Date" });
   }

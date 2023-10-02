@@ -1,4 +1,4 @@
-import fs from "node:fs/promises";
+import { promises as fs } from "fs";
 import path from "node:path";
 import { getPlaiceholder } from "plaiceholder";
 
@@ -12,6 +12,7 @@ const getBase64 = async (src: string) => {
       );
     }
   };
+
   const buffer = await byEnv(src);
 
   const {

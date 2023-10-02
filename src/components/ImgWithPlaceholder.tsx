@@ -6,10 +6,8 @@ async function ImgWithPlaceholder({ src }: { src: string }) {
 
   return (
     <Image
-      src={src}
+      {...img}
       alt={src}
-      width={img.width}
-      height={img.height}
       sizes="65vw"
       style={{ height: "auto" }}
       placeholder="blur"

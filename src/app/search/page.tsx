@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import Searchbar from "@/components/Searchbar";
 import useSearch from "@/hooks/useSearch";
 import ListItem from "@/components/ListItem";
 import { Item } from "@/pages/api/list";
+import styles from "./page.module.css";
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -27,13 +29,21 @@ export default function SearchPage() {
 
   return (
     <div>
-      <p>{keyword}에 대한 검색결과입니다.</p>
-      <button>전체 목록으로 돌아가기</button>
-      <Searchbar
-        value={keywordInput}
-        onChange={handleKeywordInput}
-        onKeyDown={handleEnterKeyPress}
-      />
+      <div id={styles.searchContainer}>
+        <p id={styles.description}>
+          <strong>{keyword}</strong>에 대한 검색 결과입니다.
+        </p>
+        <Searchbar
+          value={keywordInput}
+          onChange={handleKeywordInput}
+          onKeyDown={handleEnterKeyPress}
+        />
+      </div>
+      <div id={styles.buttonContainer}>
+        <Link href="/chats">
+          <button id={styles.goToList}>◀︎ 전체 목록으로 돌아가기</button>
+        </Link>
+      </div>
       <ol className="chatlist">
         {list &&
           list.map((item: Item, index: number) => {

@@ -144,7 +144,7 @@ export default function ChatList() {
       ) : list.length === 0 ? (
         <div className={styles.noResults}>검색 결과가 없습니다.</div>
       ) : (
-        <ol id="chatlist">
+        <ol className="chatlist">
           {list.map((item: Item, index: number) => {
             const { IMAGE, VOD, VOICE, message } = item;
             const media = { IMAGE, VOD, VOICE };

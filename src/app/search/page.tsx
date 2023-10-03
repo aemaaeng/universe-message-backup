@@ -14,11 +14,14 @@ export default function SearchPage() {
   const keyword = searchParams?.get("keyword");
   const { keywordInput, handleKeywordInput, handleEnterKeyPress } = useSearch();
   const [list, setList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/api/search?keyword=${keyword}`)
       .then((res) => res.json())
       .then((res) => {
+        setIsLoading(false);
         setList(res.result);
       })
       .catch((err) => console.error(err));
@@ -42,7 +45,7 @@ export default function SearchPage() {
         </Link>
       </div>
       <ol className="chatlist">
-        {list.length === 0 ? (
+        {!isLoading && list.length === 0 ? (
           <div className={styles.noResults}>검색 결과가 없습니다.</div>
         ) : (
           list.map((item: Item, index: number) => {

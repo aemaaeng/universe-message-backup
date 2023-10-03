@@ -55,6 +55,10 @@
 검색 기능을 통해 키워드가 포함된 채팅을 찾을 수 있습니다.  
 키워드는 하이라이트로 표시됩니다.
 
+\+ 🔧 2023.10.03 - 검색 결과 페이지가 별도로 분리되었습니다.
+
+<img src="https://github.com/aemaaeng/universe-message-backup/assets/78579776/d1f09bff-4a54-4018-90ed-bed0ce76e7bb" width="350" />
+
 ### 채팅 열람
 
 <img src="https://github.com/aemaaeng/universe-message-backup/assets/78579776/c9a060e7-0cd5-4214-8096-9e547e0f0811" width="350" />
@@ -78,6 +82,7 @@
 - Next.js 13으로 마이그레이션 - 🔗 [issue](https://github.com/aemaaeng/universe-message-backup/issues/26) 🔗 [PR](https://github.com/aemaaeng/universe-message-backup/pull/27)
 - 이미지 layout shift 수정 - 🔗 [issue](https://github.com/aemaaeng/universe-message-backup/issues/42) 🔗 [PR](https://github.com/aemaaeng/universe-message-backup/pull/48)
 - 미디어 필터링 기능 - 🔗 [issue](https://github.com/aemaaeng/universe-message-backup/issues/50) 🔗 [PR](https://github.com/aemaaeng/universe-message-backup/pull/57)
+- 검색 페이지 분리 - 🔗 [issue](https://github.com/aemaaeng/universe-message-backup/issues/64) 🔗 [PR](https://github.com/aemaaeng/universe-message-backup/pull/67)
 
 ## 설치
 

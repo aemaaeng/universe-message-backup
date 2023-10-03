@@ -51,7 +51,7 @@ a {
   color: inherit;
 }
 
-#chatlist {
+.chatlist {
   display: grid;
   margin: 0px 15px;
   padding-bottom: 15px;
@@ -64,13 +64,13 @@ a {
 }
 
 @media (max-width: 800px) {
-  #chatlist {
+  .chatlist {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  #chatlist {
+  .chatlist {
     grid-template-columns: 1fr;
   }
 }

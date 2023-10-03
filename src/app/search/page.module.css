@@ -1,0 +1,40 @@
+#searchContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 15px 15px 15px;
+}
+
+#description {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10px 0px;
+}
+
+#buttonContainer {
+  margin: 0px 15px 15px 15px;
+}
+
+#goToList {
+  background-color: var(--deepPurple);
+  color: white;
+  outline: none;
+  border: none;
+  padding: 5px 9px;
+  border-radius: 5px;
+}
+
+.noResults {
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 755px) {
+  #searchContainer {
+    display: block;
+  }
+  #buttonContainer {
+    display: flex;
+    justify-content: center;
+  }
+}

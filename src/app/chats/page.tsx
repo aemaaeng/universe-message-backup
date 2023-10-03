@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import useSearch from "@/hooks/useSearch";
 import ListItem from "@/components/ListItem";
 import { Item } from "@/pages/api/list";
 import styles from "./page.module.css";
@@ -31,7 +32,7 @@ export default function ChatList() {
     VOICE: false,
   });
   const [filterChanged, setFilterChanged] = useState(false);
-  const [keywordInput, setKeywordInput] = useState("");
+  const { keywordInput, handleKeywordInput, handleEnterKeyPress } = useSearch();
 
   const filterTypes = [
     { label: "사진", type: IMAGE },
@@ -111,28 +112,6 @@ export default function ChatList() {
     }
   }
 
-  function handleKeywordInput(e: React.ChangeEvent<HTMLInputElement>) {
-    setKeywordInput(e.target.value);
-  }
-
-  function handleEnterKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key !== "Enter" || e.nativeEvent.isComposing) return;
-    if (keywordInput.length === 0) {
-      window.alert("검색어를 입력해주세요.");
-      return;
-    }
-    setIsLoading(true);
-    fetch(
-      `${process.env.NEXT_PUBLIC_API_DOMAIN}/api/search?keyword=${keywordInput}`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setIsLoading(false);
-        setList(res.result);
-      })
-      .catch((err) => console.error(err));
-  }
-
   return (
     <>
       <div className={styles.barContainer}>
@@ -165,7 +144,7 @@ export default function ChatList() {
       ) : list.length === 0 ? (
         <div className={styles.noResults}>검색 결과가 없습니다.</div>
       ) : (
-        <ol id="chatlist">
+        <ol className="chatlist">
           {list.map((item: Item, index: number) => {
             const { IMAGE, VOD, VOICE, message } = item;
             const media = { IMAGE, VOD, VOICE };

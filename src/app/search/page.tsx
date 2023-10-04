@@ -44,11 +44,11 @@ export default function SearchPage() {
           <button id={styles.goToList}>◀︎ 전체 목록으로 돌아가기</button>
         </Link>
       </div>
-      <ol className="chatlist">
-        {!isLoading && list.length === 0 ? (
-          <div className={styles.noResults}>검색 결과가 없습니다.</div>
-        ) : (
-          list.map((item: Item, index: number) => {
+      {!isLoading && list.length === 0 ? (
+        <div className={styles.noResults}>검색 결과가 없습니다.</div>
+      ) : (
+        <ol className="chatlist">
+          {list.map((item: Item, index: number) => {
             const { IMAGE, VOD, VOICE, message } = item;
             const media = { IMAGE, VOD, VOICE };
 
@@ -62,9 +62,9 @@ export default function SearchPage() {
                 keyword={keyword!}
               />
             );
-          })
-        )}
-      </ol>
+          })}
+        </ol>
+      )}
     </div>
   );
 }

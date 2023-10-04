@@ -139,10 +139,8 @@ export default function ChatList() {
           onKeyDown={handleEnterKeyPress}
         />
       </div>
-      {keywordInput.length === 0 && isLoading ? (
+      {list.length === 0 || isLoading ? (
         <Loading />
-      ) : list.length === 0 ? (
-        <div className={styles.noResults}>검색 결과가 없습니다.</div>
       ) : (
         <ol className="chatlist">
           {list.map((item: Item, index: number) => {

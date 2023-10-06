@@ -8,10 +8,7 @@ import styles from "./page.module.css";
 import FilterButton from "@/components/FilterButton";
 import Loading from "@/components/Loading";
 import Searchbar from "@/components/Searchbar";
-
-const IMAGE = "IMAGE";
-const VOD = "VOD";
-const VOICE = "VOICE";
+import { IMAGE, VOD, VOICE } from "@/utils/constants";
 
 interface FilterStates {
   [index: string]: boolean;

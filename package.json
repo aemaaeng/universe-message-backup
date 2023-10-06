@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "node src/scripts/generateBase64.mjs"
   },
   "dependencies": {
     "@plaiceholder/next": "^3.0.0",
@@ -15,7 +16,7 @@
     "@types/react-dom": "18.2.7",
     "cors": "^2.8.5",
     "framer-motion": "^10.16.4",
-    "next": "13.4.19",
+    "next": "^13.5.3",
     "next-images": "^1.8.5",
     "plaiceholder": "^3.0.0",
     "react": "18.2.0",

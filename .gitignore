@@ -54,3 +54,6 @@ data.json
 # next
 .next
 .vercel
+
+# base64JSON
+src/scripts/output

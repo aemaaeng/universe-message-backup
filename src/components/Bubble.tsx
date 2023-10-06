@@ -1,5 +1,6 @@
 import styles from "./Bubble.module.css";
 import ImgWithPlaceholder from "./ImgWithPlaceholder";
+import { TEXT, IMAGE, VOD, VOICE } from "@/utils/constants";
 
 export type ChatMessage = {
   nickname: string;
@@ -22,15 +23,15 @@ function Bubble({
   // content의 타입에 따라 다르게 보여주기
   return (
     <li className={styles.listContainer}>
-      {data.type === "TEXT" ? (
+      {data.type === TEXT ? (
         <div className={styles.textContainer}>
           <div className={styles.text}>{data.message}</div>
         </div>
       ) : null}
-      {data.type === "IMAGE" ? (
+      {data.type === IMAGE ? (
         <ImgWithPlaceholder src={`/media/${data.message}`} />
       ) : null}
-      {data.type === "VOD" ? (
+      {data.type === VOD ? (
         <video
           className={styles.videoContainer}
           width="100%"
@@ -43,7 +44,7 @@ function Bubble({
           Your browser does not support the video tag.
         </video>
       ) : null}
-      {data.type === "VOICE" ? (
+      {data.type === VOICE ? (
         <audio src={`/media/${data.message}`} controls></audio>
       ) : null}
       {isLastBubble ? (

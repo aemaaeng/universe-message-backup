@@ -15,7 +15,7 @@
 ## 프로젝트 개요
 
 2023년 2월 17일 [유니버스 서비스 종료](https://x.com/into__universe/status/1612977603043885058?s=20)에 따라 어플에서 제공하던 프라이빗 메시지의 열람이 불가능하게 되었습니다.  
-서비스 종료 전 csv 파일로 제공받은 채팅 데이터를 기반으로 프라이빗 메시지를 편하게 열람할 수 있는 아카이빙 웹사이트를 제작하게 되었습니다.  
+서비스 종료 전 csv 파일로 제공받은 채팅 데이터를 기반으로 프라이빗 메시지를 편하게 열람할 수 있는 **아카이빙 웹사이트**를 제작하게 되었습니다.  
 [🔗 Demo](https://hamniverse.vercel.app/)
 
 ## 사용 기술
@@ -83,6 +83,7 @@
 - 이미지 layout shift 수정 - 🔗 [issue](https://github.com/aemaaeng/universe-message-backup/issues/42) 🔗 [PR](https://github.com/aemaaeng/universe-message-backup/pull/48)
 - 미디어 필터링 기능 - 🔗 [issue](https://github.com/aemaaeng/universe-message-backup/issues/50) 🔗 [PR](https://github.com/aemaaeng/universe-message-backup/pull/57)
 - 검색 페이지 분리 - 🔗 [issue](https://github.com/aemaaeng/universe-message-backup/issues/64) 🔗 [PR](https://github.com/aemaaeng/universe-message-backup/pull/67)
+- 배포 시 이미지 로딩 오류 - 🔗 [issue](https://github.com/aemaaeng/universe-message-backup/issues/62) 🔗 [PR 1](https://github.com/aemaaeng/universe-message-backup/pull/63) 🔗 [PR 2](https://github.com/aemaaeng/universe-message-backup/pull/69)
 
 ## 설치
 
@@ -103,13 +104,19 @@ npm install
    [이 링크](https://drive.google.com/drive/folders/1gTxB6pAla1aCFtwaBbirFgh3a_QjuPW6?usp=sharing)에서 `data.json`과 media 폴더를 다운로드 받아 `data.json`은 프로젝트의 루트에, `media` 폴더는 `public` 폴더 아래에 위치시켜주시기 바랍니다.
    `data.json`과 `public/media`가 존재하지 않으면 프로젝트가 로컬에서 원활하게 실행되지 않습니다.
 
-4. 프로젝트 디렉토리에서 개발 서버를 실행합니다.
+4. (초기 실행 시) 프로젝트 루트 디렉토리에서 `npm run generate`를 실행합니다. 이미지 로딩에 필요한 json 파일을 생성해주는 명령어입니다.
+
+```
+npm run generate
+```
+
+5. 프로젝트 디렉토리에서 개발 서버를 실행합니다.
 
 ```
 npm run dev
 ```
 
-5. [http://localhost:3000](http://localhost:3000)에 접속하면 프로젝트를 볼 수 있습니다.
+6. [http://localhost:3000](http://localhost:3000)에 접속하면 프로젝트를 볼 수 있습니다.
 
 \* 본 프로젝트는 Node.js v18.12.1에서 개발되었습니다.
 

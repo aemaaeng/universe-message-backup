@@ -22,7 +22,7 @@ async function generateAllBase64() {
       const {
         metadata: { height, width },
         base64,
-      } = await getPlaiceholder(imageBuffer, { size: 10 });
+      } = await getPlaiceholder(imageBuffer, { size: 4 });
 
       result[filename] = {
         base64,

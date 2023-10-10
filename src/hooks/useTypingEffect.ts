@@ -4,7 +4,9 @@ function useTypingEffect(wordsArr: string[], delay: number, pause: number) {
   const [arrIdx, setArrIdx] = useState(0);
   const [text, setText] = useState(""); // 하나씩 입력될 텍스트
   const [idx, setIdx] = useState(0); // 인덱스
-  const [typingState, setTypingState] = useState("typing");
+  const [typingState, setTypingState] = useState<
+    "typing" | "pausing" | "deleting"
+  >("typing");
 
   useEffect(() => {
     const intervalId = setInterval(

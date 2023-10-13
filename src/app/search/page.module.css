@@ -32,6 +32,7 @@
 @media (max-width: 755px) {
   #searchContainer {
     display: block;
+    text-align: center;
   }
   #buttonContainer {
     display: flex;

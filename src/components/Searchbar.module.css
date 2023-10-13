@@ -6,7 +6,6 @@
 
 .searchBarContainer > label {
   height: 40px;
-  line-height: 40px;
 }
 
 .searchBarContainer .searchInput {
@@ -14,8 +13,6 @@
   text-indent: 40px;
   height: 40px;
   line-height: 20px;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   cursor: pointer;
 }
@@ -39,7 +36,8 @@
 }
 
 @media (max-width: 755px) {
-  .searchInput {
+  .searchInput,
+  .searchInput:focus {
     width: 50%;
     cursor: text;
     border-radius: 0px;
@@ -47,8 +45,6 @@
   }
 
   .searchInput:focus {
-    width: 50%;
-    cursor: text;
     border: none;
     border-radius: 0px;
     border-bottom: 2px solid var(--deepPurple);
@@ -56,9 +52,7 @@
 }
 
 @media (max-width: 413px) {
-  .searchInput {
-    width: 100%;
-  }
+  .searchInput,
   .searchInput:focus {
     width: 100%;
   }

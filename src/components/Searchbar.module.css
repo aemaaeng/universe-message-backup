@@ -11,7 +11,6 @@
 
 .searchBarContainer .searchInput {
   background-color: transparent;
-  border: none;
   text-indent: 40px;
   height: 40px;
   line-height: 20px;
@@ -40,6 +39,13 @@
 }
 
 @media (max-width: 755px) {
+  .searchInput {
+    width: 50%;
+    cursor: text;
+    border-radius: 0px;
+    border-bottom: 2px solid var(--gray);
+  }
+
   .searchInput:focus {
     width: 50%;
     cursor: text;
@@ -50,6 +56,9 @@
 }
 
 @media (max-width: 413px) {
+  .searchInput {
+    width: 100%;
+  }
   .searchInput:focus {
     width: 100%;
   }

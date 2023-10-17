@@ -29,6 +29,10 @@
   left: 0;
 }
 
+.link:visited {
+  color: var(--gray);
+}
+
 .iconGroup {
   display: flex;
   align-items: center;

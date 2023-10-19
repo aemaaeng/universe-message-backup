@@ -29,7 +29,11 @@ function Bubble({
         </div>
       ) : null}
       {data.type === IMAGE ? (
-        <ImgWithPlaceholder src={`/media/${data.message}`} />
+        <ImgWithPlaceholder
+          src={`/media/${data.message}`}
+          sizes="65vw"
+          style={{ height: "auto" }}
+        />
       ) : null}
       {data.type === VOD ? (
         <video

@@ -49,8 +49,8 @@ export default function SearchPage() {
       ) : (
         <ol className="chatlist">
           {list.map((item: Item, index: number) => {
-            const { IMAGE, VOD, VOICE, message } = item;
-            const media = { IMAGE, VOD, VOICE };
+            const { IMAGE, VOD, VOICE, message, imgSrc } = item;
+            const media = { IMAGE, VOD, VOICE, imgSrc };
 
             return (
               <ListItem

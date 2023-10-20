@@ -16,7 +16,10 @@ function searchMessage(keyword: string) {
     groupedByDate.chats.forEach((grouped) => {
       grouped.forEach((chat) => {
         if (chat.type !== "TEXT") {
-          obj[chat.type] = true;
+          if (chat.type === "IMAGE") {
+            obj.IMAGE = true;
+            if (!obj.imgSrc) obj.imgSrc = chat.message;
+          } else obj[chat.type] = true;
         } else if (
           chat.type === "TEXT" &&
           String(chat.message).includes(keyword)

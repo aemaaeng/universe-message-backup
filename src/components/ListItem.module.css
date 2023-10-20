@@ -1,7 +1,15 @@
 .itemContainer {
   background-color: white;
-  padding: 30px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px 5px;
   border-radius: 5px;
+}
+
+.itemContainer > img {
+  border-radius: 3px;
+  min-width: 100px;
 }
 
 .dateContainer {
@@ -40,10 +48,17 @@
 
 .message {
   margin-top: 10px;
+  margin-right: 10px;
   font-size: 0.9rem;
   color: var(--gray);
 }
 
 .message > mark {
   color: inherit;
+}
+
+@media (max-width: 413px) {
+  .message {
+    font-size: 0.8rem;
+  }
 }

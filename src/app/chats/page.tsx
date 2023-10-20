@@ -31,7 +31,7 @@ export default function ChatList() {
   const [filterChanged, setFilterChanged] = useState(false);
   const { keywordInput, handleKeywordInput, handleEnterKeyPress } = useSearch();
 
-  const filterTypes = [
+  const filterButtonTypes = [
     { label: "사진", type: IMAGE },
     { label: "동영상", type: VOD },
     { label: "음성", type: VOICE },
@@ -120,7 +120,7 @@ export default function ChatList() {
           />
           <span className={styles.text}>포함: </span>
           <div className={styles.optionContainer}>
-            {filterTypes.map((el, idx) => (
+            {filterButtonTypes.map((el, idx) => (
               <FilterButton
                 key={idx}
                 label={el.label}
@@ -141,8 +141,8 @@ export default function ChatList() {
       ) : (
         <ol className="chatlist">
           {list.map((item: Item, index: number) => {
-            const { IMAGE, VOD, VOICE, message } = item;
-            const media = { IMAGE, VOD, VOICE };
+            const { IMAGE, VOD, VOICE, message, imgSrc } = item;
+            const media = { IMAGE, VOD, VOICE, imgSrc };
 
             return (
               <ListItem

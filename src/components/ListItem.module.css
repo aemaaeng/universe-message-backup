@@ -1,7 +1,14 @@
 .itemContainer {
   background-color: white;
-  padding: 30px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px 5px;
   border-radius: 5px;
+}
+
+.itemContainer > img {
+  border-radius: 3px;
 }
 
 .dateContainer {

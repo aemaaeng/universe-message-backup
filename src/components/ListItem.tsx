@@ -3,8 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Item } from "@/pages/api/list";
 import highlightKeyword from "@/utils/highlightKeyword";
+import Thumbnail from "./Thumbnail";
 
-type Media = Omit<Item, "date">;
+export type Media = Omit<Item, "date">;
 
 function ListItem({
   content,
@@ -23,6 +24,7 @@ function ListItem({
 
   return (
     <li className={styles.itemContainer} key={id}>
+      <Thumbnail media={media} />
       <div className={styles.dateContainer}>
         <Link className={styles.link} href={`chat/${content}`}>
           {content}

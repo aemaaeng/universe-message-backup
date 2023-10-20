@@ -9,6 +9,7 @@
 
 .itemContainer > img {
   border-radius: 3px;
+  min-width: 100px;
 }
 
 .dateContainer {
@@ -47,6 +48,7 @@
 
 .message {
   margin-top: 10px;
+  margin-right: 10px;
   font-size: 0.9rem;
   color: var(--gray);
 }
@@ -54,3 +56,5 @@
 .message > mark {
   color: inherit;
 }
+
+/* 반응형 적용하기 */
